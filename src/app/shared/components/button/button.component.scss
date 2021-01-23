@@ -1,0 +1,32 @@
+.button {
+  font-size: 16px;
+  padding: 12px 32px;
+  border: solid 1px;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &--orange {
+    background-color: #F2994A;
+    border-color: #E0812C;
+    color: #FFFFFF;
+  }
+
+  &--blue {
+    background-color: #2F80ED;
+    border-color: #2F80ED;
+    color: #FFFFFF;
+  }
+
+  &--outline {
+    background-color: #FFFFFF;
+    border-color: #2F80ED;
+    color: #2F80ED;
+  }
+
+  &--link {
+    background-color: transparent;
+    border-color: transparent;
+    color: #2F80ED;
+    padding: inherit 0;
+  }
+}

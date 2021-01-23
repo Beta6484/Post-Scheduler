@@ -1,0 +1,17 @@
+.header {
+  background-color: #ffffff;
+  padding: 15px 0;
+  overflow: hidden;
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+  }
+
+  &__logo {
+    width: auto;
+    height: 50px;
+  }
+}

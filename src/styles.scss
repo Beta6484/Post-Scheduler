@@ -1,1 +1,58 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+@import url('../node_modules/normalize.css/normalize.css');
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 14px;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #E5E5E5;
+  color: #4F4F4F;
+
+  app-root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+    app-home {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+  }
+}
+
+a {
+  color: #1661F3;
+  transition: .6s;
+}
+
+.container {
+  width: 100%;
+  padding: 0 40px;
+  margin: 0 auto;
+}
+
+.title {
+  color: #333333;
+  font-size: 16px;
+}
+
+.profile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__avatar {
+    margin-right: 10px;
+  }
+
+  &__name {
+    color: #000000;
+  }
+}
