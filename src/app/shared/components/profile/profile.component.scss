@@ -1,0 +1,23 @@
+.profile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__name {
+    display: none;
+    color: #000000;
+  }
+}
+
+// RESPONSIVE
+@media (min-width: 992px) {
+  .profile {
+    &__avatar {
+      margin-right: 10px;
+    }
+
+    &__name {
+      display: inline;
+    }
+  }
+}

@@ -4,8 +4,20 @@
   justify-content: center;
   align-items: center;
   flex-grow: 1;
+  padding: 20px 0;
 
   &__image {
-    margin-bottom: 70px;
+    max-width: 100%;
+    margin-bottom: 50px;
+  }
+}
+
+
+// RESPONSIVE
+@media (min-width: 992px) {
+  .home {
+    &__image {
+      margin-bottom: 70px;
+    }
   }
 }

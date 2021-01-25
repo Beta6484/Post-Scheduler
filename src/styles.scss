@@ -34,7 +34,7 @@ a {
 
 .container {
   width: 100%;
-  padding: 0 40px;
+  padding: 0 30px;
   margin: 0 auto;
 }
 
@@ -43,16 +43,9 @@ a {
   font-size: 16px;
 }
 
-.profile {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  &__avatar {
-    margin-right: 10px;
-  }
-
-  &__name {
-    color: #000000;
+// RESPONSIVE
+@media (min-width: 992px) {
+  .container {
+    padding: 0 40px;
   }
 }

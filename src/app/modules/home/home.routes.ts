@@ -8,14 +8,7 @@ export const ROUTES: Routes = [
     pathMatch: 'full'
   },
   {
-    path: '**',
-    redirectTo: 'home'
-  },
-  {
     path: 'home',
-    component: HomeComponent,
-    data: {
-      title: 'Agendamento de Posts - mLabs'
-    }
+    component: HomeComponent
   }
 ]

@@ -1,17 +1,41 @@
 .header {
   background-color: #ffffff;
   padding: 15px 0;
-  overflow: hidden;
 
   &__wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 20px;
+  }
 
+  &__mobileBtn {
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    border: none;
   }
 
   &__logo {
+    display: none;
     width: auto;
     height: 50px;
+  }
+}
+
+// RESPONSIVE
+@media (min-width: 992px) {
+  .header {
+    &__wrapper {
+      padding: 0 40px;
+    }
+
+    &__mobileBtn {
+      display: none;
+    }
+
+    &__logo {
+      display: block;
+    }
   }
 }
