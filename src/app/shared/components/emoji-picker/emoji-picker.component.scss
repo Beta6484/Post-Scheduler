@@ -1,0 +1,17 @@
+.emojiPicker {
+  &__emojiWrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  &__toggleEmoji {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: transparent;
+    padding: 6px;
+    border: none;
+    cursor: pointer;
+  }
+}

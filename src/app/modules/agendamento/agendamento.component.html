@@ -1,1 +1,61 @@
-<p>agendamento works!</p>
+<div class="agendamento">
+  <div class="container">
+    <form [formGroup]="scheduleForm" (ngSubmit)="onSubmit()">
+      <div class="container__row">
+        <div class="container__halfCol">
+          <div class="container__row">
+            <!-- Painel de redes sociais -->
+            <div class="container__halfCol">
+              <div class="agendamento__panel">
+                <div class="agendamento__panelHeader">
+                  Redes sociais
+                </div>
+                <div class="agendamento__panelBody">
+                  <div class="agendamento__socialNetworks">
+                    <app-custom-checkbox *ngFor="let item of socialNetworks$ | async; trackBy: trackByFn" [icon]="item.icon" [disabled]="item.status == 'disabled' ? true : false" (change)="checkboxChanged($event.target.checked, item.id)"></app-custom-checkbox>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Painel de seleção de data e hora -->
+            <div class="container__halfCol">
+              <div class="agendamento__panel">
+                <div class="agendamento__panelHeader">
+                  Data de publicação
+                </div>
+                <div class="agendamento__panelBody">
+                  <div class="agendamento__datePicker">
+                    <div class="agendamento__date">
+                      <i class="fas fa-calendar-alt"></i>
+                      <dp-date-picker [config]="postDateConfig" [placeholder]="'DD/MM'" [mode]="'day'" (onSelect)="datePickerChanged($event)"></dp-date-picker>
+                    </div>
+                    <div class="agendamento__time">
+                      <i class="fas fa-clock"></i>
+                      <dp-date-picker [config]="postTimeConfig" [placeholder]="'HH/MM'" [mode]="'time'" (onSelect)="timePickerChanged($event)"></dp-date-picker>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="container__fullCol">
+              <div class="agendamento__panel">
+                <div class="agendamento__panelHeader">
+                  Texto do post
+                </div>
+                <div class="agendamento__panelBody">
+                  <div class="agendamento__textarea">
+                    <app-emoji-picker (onSelect)="emojiSelected($event)"></app-emoji-picker>
+                    <textarea class="agendamento__text" formControlName="text"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button style="margin-top: 30px;" type="button" (click)="onSubmit()">Teste</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

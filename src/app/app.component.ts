@@ -15,6 +15,12 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.storeInitialSchedules();
+    this.storeInitialSchedulesStatus();
+    this.storeInitialSocialNetworks();
+  }
+
+  private storeInitialSchedulesStatus() {
     this.dbService.getAll('schedules-status').subscribe(res => {
       if(res.length === 0) {
         this.httpClient.get("assets/data/schedules-status.json").subscribe(res => {
@@ -30,7 +36,9 @@ export class AppComponent implements OnInit {
         return;
       }
     });
+  }
 
+  private storeInitialSchedules() {
     this.dbService.getAll('schedules').subscribe(res => {
       if(res.length === 0) {
         this.httpClient.get("assets/data/schedules.json").subscribe(res => {
@@ -49,7 +57,9 @@ export class AppComponent implements OnInit {
         return;
       }
     });
+  }
 
+  private storeInitialSocialNetworks() {
     this.dbService.getAll('social-networks').subscribe(res => {
       if(res.length === 0) {
         this.httpClient.get("assets/data/social-networks.json").subscribe(res => {
@@ -58,7 +68,8 @@ export class AppComponent implements OnInit {
             this.dbService.add('social-networks', {
               name: el.name,
               icon: el.icon,
-              status: el.status
+              status: el.status,
+              color: el.color
             })
           });
         });

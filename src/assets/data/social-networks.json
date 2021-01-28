@@ -4,37 +4,43 @@
         "id": 1,
         "name": "Facebook",
         "icon": "facebook-f",
-        "status": "disabled"
+        "status": "disabled",
+        "color": "#1877f2"
       },
       {
         "id": 2,
         "name": "Linkedin",
         "icon": "linkedin-in",
-        "status": "enabled"
+        "status": "enabled",
+        "color": "#0a66c2"
       },
       {
         "id": 3,
         "name": "Instagram",
         "icon": "instagram",
-        "status": "enabled"
+        "status": "enabled",
+        "color": "#c32aa3"
       },
       {
         "id": 4,
         "name": "Youtube",
         "icon": "youtube",
-        "status": "disabled"
+        "status": "disabled",
+        "color": "#ff0000"
       },
       {
         "id": 5,
         "name": "Pinterest",
         "icon": "pinterest-p",
-        "status": "disabled"
+        "status": "disabled",
+        "color": "#bd081c"
       },
       {
         "id": 6,
         "name": "Twitter",
         "icon": "twitter",
-        "status": "disabled"
+        "status": "disabled",
+        "color": "#1da1f2"
       }
     ]
   }

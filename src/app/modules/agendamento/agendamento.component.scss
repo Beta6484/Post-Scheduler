@@ -1,0 +1,53 @@
+.agendamento {
+  padding: 20px 0;
+
+  &__panel {
+    background-color: #FFFFFF;
+    border: solid 1px #E0E0E0;
+    border-radius: 4px;
+    height: 100%;
+  }
+
+  &__panelHeader {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333333;
+    border-bottom: solid 1px #E0E0E0;
+  }
+
+  &__panelHeader, &__panelBody {
+    padding: 10px 16px;
+  }
+
+  &__socialNetworks {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__datePicker {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__textarea {
+    position: relative;
+  }
+
+  &__text {
+    width: 100%;
+    height: 150px;
+    resize: none;
+    border: solid 1px #949494;
+    border-radius: 4px;
+    padding: 6px;
+  }
+}
+
+// RESPONSIVE
+@media (min-width: 992px) {
+  .agendamento {
+    padding: 40px 0;
+  }
+}

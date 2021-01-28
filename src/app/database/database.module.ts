@@ -99,6 +99,13 @@ const dbConfig: DBConfig = {
           options: {
             unique: false
           }
+        },
+        {
+          name: 'color',
+          keypath: 'color',
+          options: {
+            unique: false
+          }
         }
       ]
     },

@@ -1,0 +1,52 @@
+.customCheckbox {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  font-size: 16px;
+  height: 32px;
+  width: 32px;
+  user-select: none;
+
+  input {
+    position: absolute;
+    opacity: 0;
+    height: 0;
+    width: 0;
+  }
+
+  input:checked ~ .customCheckbox__checkmark {
+    color: #FFFFFF;
+    background-image: linear-gradient(135deg, #EF9F2E 25%, #E02B4B 105.56%);
+    border: 1px solid #EF9F2E;
+  }
+
+  input:disabled ~ .customCheckbox__checkmark {
+    color: #989898;
+    background-color: #DDDDDD;
+  }
+
+  &__checkmark {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 32px;
+    width: 32px;
+    background-color: #ffffff;
+    border: solid 1px #9E9E9E;
+    border-radius: 50%;
+    transition: .3s;
+  }
+
+  &:hover input:not(:disabled) ~ .customCheckbox__checkmark {
+    color: #EF9F2E;
+    background-color: #FFF3E0;
+    border: 1px solid #EF9F2E;
+  }
+
+  &:hover input:checked ~ .customCheckbox__checkmark {
+    color: #FFFFFF;
+  }
+}
