@@ -1,0 +1,19 @@
+<div class="postPreview" *ngIf="socialData$ | async as socialData">
+  <div class="postPreview__placeholder" *ngIf="!showSocial">
+    <span class="postPreview__placeholderText">
+      Aguardando conteúdo. Informe os canais e as mídias desejadas para visualização.
+    </span>
+    <img src="assets/images/post-preview.png" alt="Visualização dos posts">
+  </div>
+  <div class="postPreview__social" *ngIf="showSocial">
+    <app-preview-instagram
+      *ngIf="socialData.social_network_key.includes(3)"
+      [socialData$]="socialData$"
+    ></app-preview-instagram>
+
+    <app-preview-linkedin
+      *ngIf="socialData.social_network_key.includes(2)"
+      [socialData$]="socialData$"
+    ></app-preview-linkedin>
+  </div>
+</div>

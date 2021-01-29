@@ -1,0 +1,98 @@
+.previewInstagram {
+  display: block;
+  position: relative;
+  margin: 20px;
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    border: 1px solid #BDBDBD;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  &__profile {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+  }
+
+  &__socialIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: #FFFFFF;
+    background-image: linear-gradient(187.5deg, #EF2EA2 5.81%, #E0A22B 109.34%);
+    width: 40px;
+    height: 40px;
+    border: 1px solid #EF2EA2;
+    border-radius: 50%;
+    margin-right: 12px;
+  }
+
+  &__socialUserName {
+    font-weight: 500;
+    color: #000000;
+  }
+
+  &__image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+
+    img {
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  &__postActions {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    color: #000000;
+    margin-bottom: 10px;
+
+    .previewInstagram__actionIcon {
+      margin-right: 18px;
+
+      &:last-of-type {
+        margin-right: 0;
+        margin-left: auto;
+      }
+    }
+  }
+
+  &__postText {
+    font-weight: 500;
+    color: #4F4F4F;
+    overflow-wrap: break-word;
+  }
+}
+
+// RESPONSIVE
+@media (min-width: 992px) {
+  .previewInstagram {
+    &__card {
+      max-width: 368px;
+    }
+
+    &__image {
+      width: 368px;
+      height: 368px;
+      overflow: hidden;
+    }
+  }
+}

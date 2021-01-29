@@ -48,14 +48,14 @@
                 <div class="agendamento__panelBody">
                   <div class="agendamento__textarea">
                     <app-emoji-picker (onSelect)="emojiSelected($event)"></app-emoji-picker>
-                    <textarea class="agendamento__text" formControlName="text"></textarea>
+                    <textarea class="agendamento__text" formControlName="text" placeholder="Aqui vai o texto descritivo desse post"></textarea>
                   </div>
                 </div>
               </div>
             </div>
 
             <!-- Painel de upload de arquivo -->
-            <div class="container__fullCol">
+            <div class="container__fullCol mb-0">
               <div class="agendamento__panel">
                 <div class="agendamento__panelHeader">
                   Upload de imagem
@@ -66,9 +66,22 @@
               </div>
             </div>
           </div>
-          <button style="margin-top: 30px;" type="button" (click)="onSubmit()">Teste</button>
+        </div>
+        <div class="container__halfCol">
+          <!-- Painel de visualização do post -->
+          <div class="agendamento__panel">
+            <div class="agendamento__panelHeader">
+              Visualização do post
+            </div>
+            <div class="agendamento__panelBody">
+              <div class="agendamento__postPreviewWrapper">
+                <app-post-preview [socialData$]="socialData$"></app-post-preview>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+      <button style="margin-top: 30px;" type="button" (click)="onSubmit()">Teste</button>
     </form>
   </div>
 </div>

@@ -1,0 +1,110 @@
+.previewLinkedIn {
+  display: block;
+  position: relative;
+  margin: 20px;
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    border: 1px solid #BDBDBD;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  &__profile {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+  }
+
+  &__socialIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: #FFFFFF;
+    background-color: #2E92EF;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #2E92EF;
+    border-radius: 50%;
+    margin-right: 12px;
+  }
+
+  &__socialInfo {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__socialUserName {
+    font-weight: 500;
+    color: #000000;
+    margin-bottom: 5px;
+  }
+
+  &__socialPostDate {
+    font-size: 12px;
+    color: #828282;
+  }
+
+  &__postText {
+    font-weight: 500;
+    color: #4F4F4F;
+    overflow-wrap: break-word;
+    padding: 0 15px 15px ;
+  }
+
+  &__image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+
+    img {
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+
+  &__comments {
+    font-size: 12px;
+    color: #828282;
+    padding: 10px 15px;
+  }
+
+  &__postActions {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: #000000;
+    border-top: 1px solid #BDBDBD;
+    padding: 10px 15px;
+  }
+
+  &__actionIcon {
+    margin-right: 10px;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+}
+
+// RESPONSIVE
+@media (min-width: 992px) {
+  .previewLinkedIn {
+    &__card {
+      max-width: 368px;
+    }
+
+    &__image {
+      width: 368px;
+      height: 368px;
+      overflow: hidden;
+    }
+  }
+}

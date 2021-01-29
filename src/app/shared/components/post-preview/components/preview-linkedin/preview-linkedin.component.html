@@ -1,0 +1,25 @@
+<div class="previewLinkedIn">
+  <div class="previewLinkedIn__card" *ngIf="socialData$ | async as socialData">
+    <div class="previewLinkedIn__profile">
+      <button type="button" class="previewLinkedIn__socialIcon">
+        <i class="fab fa-linkedin-in"></i>
+      </button>
+      <div class="previewLinkedIn__socialInfo">
+        <span class="previewLinkedIn__socialUserName">Anselmo Carlos</span>
+        <span class="previewLinkedIn__socialPostDate">{{ socialData.publication_date ? (socialData.publication_date | formatPostData) : (today | formatPostData)}}</span>
+      </div>
+    </div>
+    <div class="previewLinkedIn__postText">
+      {{ socialData.text ? socialData.text : 'Aqui vai o texto descritivo desse post' }}
+    </div>
+    <div class="previewLinkedIn__image">
+      <img [src]="socialData.media ? socialData.media : 'assets/images/placeholder-image.png'" alt="Preview LinkedIn Image">
+    </div>
+    <div class="previewLinkedIn__comments">5 comentários</div>
+    <div class="previewLinkedIn__postActions">
+      <i class="previewLinkedIn__actionIcon far fa-thumbs-up"></i>
+      <i class="previewLinkedIn__actionIcon far fa-comment-alt"></i>
+      <i class="previewLinkedIn__actionIcon fas fa-share"></i>
+    </div>
+  </div>
+</div>

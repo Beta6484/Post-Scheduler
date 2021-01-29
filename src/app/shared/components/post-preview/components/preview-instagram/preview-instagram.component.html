@@ -1,0 +1,23 @@
+<div class="previewInstagram">
+  <div class="previewInstagram__card" *ngIf="socialData$ | async as socialData">
+    <div class="previewInstagram__profile">
+      <button type="button" class="previewInstagram__socialIcon">
+        <i class="fab fa-instagram"></i>
+      </button>
+      <span class="previewInstagram__socialUserName">Anselmo Carlos</span>
+    </div>
+    <div class="previewInstagram__image">
+      <img [src]="socialData.media ? socialData.media : 'assets/images/placeholder-image.png'" alt="Preview Instagram Image">
+    </div>
+    <div class="previewInstagram__footer">
+      <div class="previewInstagram__postActions">
+        <i class="previewInstagram__actionIcon far fa-heart"></i>
+        <i class="previewInstagram__actionIcon far fa-comment"></i>
+        <i class="previewInstagram__actionIcon far fa-bookmark"></i>
+      </div>
+      <div class="previewInstagram__postText">
+        {{ socialData.text ? socialData.text : 'Aqui vai o texto descritivo desse post' }}
+      </div>
+    </div>
+  </div>
+</div>

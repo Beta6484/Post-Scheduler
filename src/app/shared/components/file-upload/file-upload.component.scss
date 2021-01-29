@@ -1,6 +1,7 @@
 .fileUpload {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   color: #828282;
   border: dashed 1px #BDBDBD;
@@ -45,6 +46,7 @@
 // RESPONSIVE
 @media (min-width: 992px) {
   .fileUpload {
+    min-height: 230px;
     padding: 30px;
 
     &__message {
@@ -52,6 +54,7 @@
       flex-direction: column;
       align-items: center;
       font-size: 16px;
+      font-weight: 500;
       margin-bottom: 30px;
     }
 

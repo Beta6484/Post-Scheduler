@@ -20,10 +20,11 @@ body {
     flex-direction: column;
     min-height: 100vh;
 
-    app-home, app-agendamento, app-lista {
+    app-home, app-agendamento, app-lista, app-file-upload, app-post-preview {
       display: flex;
       flex-direction: column;
       flex-grow: 1;
+      height: 100%;
     }
   }
 }
@@ -56,6 +57,11 @@ a {
     padding: 0 20px;
     margin-bottom: 20px;
   }
+}
+
+// HELPERS
+.mb-0 {
+  margin-bottom: 0 !important;
 }
 
 

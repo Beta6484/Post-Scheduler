@@ -1,9 +1,9 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { NgxIndexedDBService } from 'ngx-indexed-db';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-agendamento',
@@ -15,6 +15,7 @@ import { Observable } from 'rxjs';
 export class AgendamentoComponent implements OnInit {
   public scheduleForm: FormGroup;
   public socialNetworks$: Observable<any>;
+  public socialData$: BehaviorSubject<any> = new BehaviorSubject<any>({});
   public selectedSocialNetworks: number[] = [];
   public selectedPostDate: string;
   public selectedPostTime: string;
@@ -35,6 +36,10 @@ export class AgendamentoComponent implements OnInit {
     disableKeypress: false
   };
 
+  @HostListener('window:resize', ['$event']) onResize(event) {
+    this.isMobile();
+  }
+
   constructor(
     private title: Title,
     private dbService: NgxIndexedDBService,
@@ -44,18 +49,19 @@ export class AgendamentoComponent implements OnInit {
 
   ngOnInit(): void {
     this.title.setTitle('Painel de Agendamento de Posts - mLabs');
-    this.selectedPostDate = this.datePipe.transform(this.today, 'mediumDate');
-    this.selectedPostTime = '00:00:00';
     this.postDateConfig.min = this.datePipe.transform(this.today, 'dd-MM-yyy');
     this.socialNetworks$ = this.dbService.getAll('social-networks');
 
     this.scheduleForm = this.formBuilder.group({
-      socialNetworkKey: [this.selectedSocialNetworks],
-      publicationDate: [''],
+      social_network_key: [''],
+      publication_date: [''],
       text: [''],
       media: [''],
-      statusKey: ['1']
-    })
+      status_key: ['1']
+    });
+
+    this.onFormChange();
+    this.isMobile();
   }
 
   get f() {
@@ -67,13 +73,14 @@ export class AgendamentoComponent implements OnInit {
       if(this.selectedSocialNetworks.includes(id)) {
         return;
       } else {
-        this.selectedSocialNetworks.push(id)
+        this.selectedSocialNetworks.push(id);
+        this.scheduleForm.controls['social_network_key'].patchValue(this.selectedSocialNetworks);
       }
     } else {
       if(this.selectedSocialNetworks.includes(id)) {
         const index = this.selectedSocialNetworks.indexOf(id);
-
         this.selectedSocialNetworks.splice(index, 1);
+        this.scheduleForm.controls['social_network_key'].patchValue(this.selectedSocialNetworks);
       } else {
         return;
       }
@@ -81,11 +88,13 @@ export class AgendamentoComponent implements OnInit {
   }
 
   public datePickerChanged(res): void {
-    this.selectedPostDate = this.datePipe.transform(res.date, 'mediumDate');
+    this.selectedPostDate = res.date;
+    this.scheduleForm.controls['publication_date'].patchValue(this.formatDateTime(this.selectedPostDate, this.selectedPostTime));
   }
 
   public timePickerChanged(res): void {
-    this.selectedPostTime = this.datePipe.transform(res.date, 'HH:mm:ss');
+    this.selectedPostTime = res.date;
+    this.scheduleForm.controls['publication_date'].patchValue(this.formatDateTime(this.selectedPostDate, this.selectedPostTime));
   }
 
   public emojiSelected(res)  {
@@ -97,12 +106,26 @@ export class AgendamentoComponent implements OnInit {
     this.scheduleForm.controls['media'].patchValue(this.selectedMedia);
   }
 
+  public onFormChange() {
+    this.scheduleForm.valueChanges.subscribe(res => this.socialData$.next(res));
+  }
+
   public onSubmit() {
-    this.scheduleForm.controls['publicationDate'].patchValue(new Date(this.selectedPostDate + ', ' + this.selectedPostTime).toISOString());
     console.log(this.scheduleForm.value)
   }
 
   public trackByFn(index, item) {
     return item.id;
+  }
+
+  public isMobile():boolean {
+    return window.innerWidth < 992;
+  }
+
+  private formatDateTime(date?, time?) {
+    let selectedDate = date ? this.datePipe.transform(date, 'mediumDate') : this.datePipe.transform(this.today, 'mediumDate');
+    let selectedTime = time ? this.datePipe.transform(time, 'HH:mm:ss') : '00:00:00';
+
+    return new Date(`${selectedDate}, ${selectedTime}`).toISOString();
   }
 }
