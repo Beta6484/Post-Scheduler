@@ -39,6 +39,7 @@
               </div>
             </div>
 
+            <!-- Painel de insersão de texto com emoji -->
             <div class="container__fullCol">
               <div class="agendamento__panel">
                 <div class="agendamento__panelHeader">
@@ -49,6 +50,18 @@
                     <app-emoji-picker (onSelect)="emojiSelected($event)"></app-emoji-picker>
                     <textarea class="agendamento__text" formControlName="text"></textarea>
                   </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Painel de upload de arquivo -->
+            <div class="container__fullCol">
+              <div class="agendamento__panel">
+                <div class="agendamento__panelHeader">
+                  Upload de imagem
+                </div>
+                <div class="agendamento__panelBody">
+                  <app-file-upload (fileUploaded)="onfileUpload($event)"></app-file-upload>
                 </div>
               </div>
             </div>

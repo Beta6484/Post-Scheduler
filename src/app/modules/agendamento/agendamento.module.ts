@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { DpDatePickerModule } from 'ng2-date-picker';
 import { CustomCheckboxModule } from 'src/app/shared/components/custom-checkbox/custom-checkbox.module';
 import { EmojiPickerModule } from 'src/app/shared/components/emoji-picker/emoji-picker.module';
+import { FileUploadModule } from 'src/app/shared/components/file-upload/file-upload.module';
 import { AgendamentoComponent } from './agendamento.component';
 import { ROUTES } from './agendamento.routes';
 
@@ -19,6 +20,7 @@ import { ROUTES } from './agendamento.routes';
     FormsModule,
     DpDatePickerModule,
     EmojiPickerModule,
+    FileUploadModule,
     RouterModule.forChild(ROUTES)
   ],
   exports: [

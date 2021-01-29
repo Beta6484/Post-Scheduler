@@ -18,7 +18,7 @@ export class AgendamentoComponent implements OnInit {
   public selectedSocialNetworks: number[] = [];
   public selectedPostDate: string;
   public selectedPostTime: string;
-  public selectedMedia: any[] = [];
+  public selectedMedia: string | ArrayBuffer;
   public today = new Date();
   public postDateConfig = {
     locale: 'pt-br',
@@ -92,9 +92,13 @@ export class AgendamentoComponent implements OnInit {
     this.scheduleForm.controls['text'].patchValue(this.scheduleForm.controls['text'].value + res);
   }
 
+  public onfileUpload(res) {
+    this.selectedMedia = res;
+    this.scheduleForm.controls['media'].patchValue(this.selectedMedia);
+  }
+
   public onSubmit() {
     this.scheduleForm.controls['publicationDate'].patchValue(new Date(this.selectedPostDate + ', ' + this.selectedPostTime).toISOString());
-    // this.scheduleForm.patchValue({publicationDate: new Date(this.selectedPostDate + ', ' + this.selectedPostTime).toISOString()});
     console.log(this.scheduleForm.value)
   }
 

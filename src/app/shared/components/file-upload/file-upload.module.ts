@@ -1,15 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { DragDropDirective } from '../../directives/dragdrop.directive';
+import { DragNDropDirective } from '../../directives/dragndrop.directive';
+import { ButtonModule } from '../button/button.module';
 import { FileUploadComponent } from './file-upload.component';
 
 @NgModule({
   declarations: [
-    FileUploadComponent
+    FileUploadComponent,
+    DragNDropDirective
   ],
   imports: [
     CommonModule,
-    DragDropDirective
+    ButtonModule
   ],
   exports: [
     FileUploadComponent
