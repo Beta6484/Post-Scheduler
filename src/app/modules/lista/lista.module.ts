@@ -13,4 +13,5 @@ import { ROUTES } from './lista.routes';
     RouterModule.forChild(ROUTES)
   ]
 })
-export class ListaModule { }
+
+export class ListaModule {}

@@ -1,5 +1,4 @@
 <div class="fileUpload" appDragNDrop (onFileDropped)="uploadFile($event)" (showError)="this.fileError = $event">
-<!-- <div class="fileUpload" appDragDrop (onFileDropped)="uploadFile($event)"> -->
   <div class="fileUpload__message" *ngIf="!fileSelected">
     <i class="fileUpload__icon fas fa-cloud-upload-alt"></i>
     Arraste e solte uma imagem aqui ou clique no botão abaixo
@@ -8,7 +7,7 @@
   <div class="fileUpload__error" *ngIf="fileError">Tipo de arquivo inválido</div>
   <div class="fileUpload__selected" *ngIf="fileSelected">
     <span class="fileUpload__name">
-      {{ file }}
+      {{ file ? file : 'Imagem Armazenada' }}
     </span>
     <button class="fileUpload__delete" type="button" (click)="deleteFile()">
       <i class="fas fa-trash-alt"></i>

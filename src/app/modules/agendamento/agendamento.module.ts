@@ -3,9 +3,11 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { DpDatePickerModule } from 'ng2-date-picker';
+import { ButtonModule } from 'src/app/shared/components/button/button.module';
 import { CustomCheckboxModule } from 'src/app/shared/components/custom-checkbox/custom-checkbox.module';
 import { EmojiPickerModule } from 'src/app/shared/components/emoji-picker/emoji-picker.module';
 import { FileUploadModule } from 'src/app/shared/components/file-upload/file-upload.module';
+import { ModalModule } from 'src/app/shared/components/modal/modal.module';
 import { PostPreviewModule } from 'src/app/shared/components/post-preview/post-preview.module';
 import { AgendamentoComponent } from './agendamento.component';
 import { ROUTES } from './agendamento.routes';
@@ -23,6 +25,8 @@ import { ROUTES } from './agendamento.routes';
     EmojiPickerModule,
     FileUploadModule,
     PostPreviewModule,
+    ButtonModule,
+    ModalModule,
     RouterModule.forChild(ROUTES)
   ],
   exports: [

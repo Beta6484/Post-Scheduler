@@ -1,0 +1,50 @@
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 110;
+  overflow: auto;
+
+  &__panel {
+    background-color: #FAFAFA;
+    width: 680px;
+    max-width: calc(100% - 30px);
+    border: solid 1px #BDBDBD;
+    border-radius: 4px;
+    margin: 15px;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    font-size: 16px;
+    color: #333333;
+  }
+
+  &__closeBtn {
+    font-size: 18px;
+    color: #333333;
+    margin-left: auto;
+  }
+
+  &__body {
+    padding: 15px;
+  }
+}
+
+.modal__backDrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(#000000, .6);
+  z-index: 100;
+}

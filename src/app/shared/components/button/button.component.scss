@@ -1,9 +1,10 @@
 .button {
   font-size: 16px;
-  padding: 12px 32px;
+  white-space: nowrap;
+  width: 184px;
   border: solid 1px;
   border-radius: 4px;
-  cursor: pointer;
+  padding: 12px;
 
   &--orange {
     background-color: #F2994A;
@@ -27,6 +28,31 @@
     background-color: transparent;
     border-color: transparent;
     color: #2F80ED;
-    padding: inherit 0;
+    width: unset;
+    padding: 0;
+  }
+
+  &--block {
+    width: 100%;
+  }
+
+  &:disabled {
+    opacity: .6;
+    cursor: default;
+  }
+}
+
+// RESPONSIVE
+@media (max-width: 991px) {
+  .button {
+    &--mobile {
+      font-size: 12px;
+      padding: 6px;
+      width: 108px;
+    }
+
+    &--link {
+      width: unset;
+    }
   }
 }

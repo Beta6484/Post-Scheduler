@@ -1,12 +1,13 @@
 .previewInstagram {
   display: block;
   position: relative;
+  width: calc(100vw - 40px);
   margin: 20px;
 
   &__card {
     display: flex;
     flex-direction: column;
-    max-width: 100%;
+    width: 100%;
     border: 1px solid #BDBDBD;
     border-radius: 4px;
     overflow: hidden;
@@ -85,6 +86,8 @@
 // RESPONSIVE
 @media (min-width: 992px) {
   .previewInstagram {
+    width: 368px;
+
     &__card {
       max-width: 368px;
     }

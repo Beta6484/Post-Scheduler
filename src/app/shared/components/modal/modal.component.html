@@ -1,0 +1,14 @@
+<div class="modal" *ngIf="showModal">
+  <div class="modal__panel">
+    <div class="modal__header">
+      {{ title ? title : '' }}
+      <button class="modal__closeBtn" type="button" (click)="close()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="modal__body">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>
+<div class="modal__backDrop" *ngIf="showModal"></div>

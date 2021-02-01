@@ -1,5 +1,5 @@
 <label class="customCheckbox" [ngStyle]="disabled ? {'cursor': 'default'} : {}">
-  <input type="checkbox" [checked]="isChecked" (change)="onChanged($event)" (blur)="onBlur($event)" [disabled]="disabled">
+  <input type="checkbox" [checked]="checked" (change)="onChanged($event)" (blur)="onBlur($event)" [disabled]="disabled">
   <span class="customCheckbox__checkmark">
     <i class="fab fa-{{icon}}"></i>
   </span>

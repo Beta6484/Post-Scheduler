@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-file-upload',
@@ -8,8 +8,8 @@ import { Component, EventEmitter, Output } from '@angular/core';
 
 export class FileUploadComponent {
   public file: string;
-  public fileSelected: boolean = false;
   public fileError: boolean = false;
+  @Input() fileSelected: boolean = false;
   @Output() fileUploaded: EventEmitter<string | ArrayBuffer> = new EventEmitter();
 
   public uploadFile(event) {

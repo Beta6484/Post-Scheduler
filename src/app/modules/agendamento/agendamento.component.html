@@ -12,7 +12,13 @@
                 </div>
                 <div class="agendamento__panelBody">
                   <div class="agendamento__socialNetworks">
-                    <app-custom-checkbox *ngFor="let item of socialNetworks$ | async; trackBy: trackByFn" [icon]="item.icon" [disabled]="item.status == 'disabled' ? true : false" (change)="checkboxChanged($event.target.checked, item.id)"></app-custom-checkbox>
+                    <app-custom-checkbox
+                      *ngFor="let item of socialNetworks$ | async; trackBy: trackByFn"
+                      [icon]="item.icon"
+                      [disabled]="item.status == 'disabled' ? true : false"
+                      [checked]="selectedSocialNetworks.includes(item.id)"
+                      (change)="checkboxChanged($event.target.checked, item.id)"
+                    ></app-custom-checkbox>
                   </div>
                 </div>
               </div>
@@ -28,11 +34,21 @@
                   <div class="agendamento__datePicker">
                     <div class="agendamento__date">
                       <i class="fas fa-calendar-alt"></i>
-                      <dp-date-picker [config]="postDateConfig" [placeholder]="'DD/MM'" [mode]="'day'" (onSelect)="datePickerChanged($event)"></dp-date-picker>
+                      <dp-date-picker
+                        [config]="postDateConfig"
+                        [placeholder]="selectedPostDate ? (selectedPostDate | date: 'dd/MM/yyyy') : 'DD/MM'"
+                        [mode]="'day'"
+                        (onSelect)="datePickerChanged($event)"
+                      ></dp-date-picker>
                     </div>
                     <div class="agendamento__time">
                       <i class="fas fa-clock"></i>
-                      <dp-date-picker [config]="postTimeConfig" [placeholder]="'HH/MM'" [mode]="'time'" (onSelect)="timePickerChanged($event)"></dp-date-picker>
+                      <dp-date-picker
+                        [config]="postTimeConfig"
+                        [placeholder]="selectedPostTime ? (selectedPostTime | date: 'HH:mm') : 'HH/MM'"
+                        [mode]="'time'"
+                        (onSelect)="timePickerChanged($event)"
+                      ></dp-date-picker>
                     </div>
                   </div>
                 </div>
@@ -61,7 +77,7 @@
                   Upload de imagem
                 </div>
                 <div class="agendamento__panelBody">
-                  <app-file-upload (fileUploaded)="onfileUpload($event)"></app-file-upload>
+                  <app-file-upload [fileSelected]="imageFromDraft" (fileUploaded)="onfileUpload($event)"></app-file-upload>
                 </div>
               </div>
             </div>
@@ -69,9 +85,12 @@
         </div>
         <div class="container__halfCol">
           <!-- Painel de visualização do post -->
-          <div class="agendamento__panel">
+          <div class="agendamento__panel agendamento__postVisualization" *ngIf="showPostVisualization">
             <div class="agendamento__panelHeader">
               Visualização do post
+              <button class="agendamento__closeVisualization" type="button" (click)="togglePostVisualization()" *ngIf="isMobile()">
+                <i class="fas fa-times"></i>
+              </button>
             </div>
             <div class="agendamento__panelBody">
               <div class="agendamento__postPreviewWrapper">
@@ -79,9 +98,32 @@
               </div>
             </div>
           </div>
+          <app-button text="Visualizar post" colorStyle="orange" [block]="true" (action)="togglePostVisualization()" *ngIf="isMobile()"></app-button>
         </div>
       </div>
-      <button style="margin-top: 30px;" type="button" (click)="onSubmit()">Teste</button>
     </form>
   </div>
+  <div class="agendamento__footer">
+    <div class="container">
+      <div class="agendamento__actions">
+        <app-button text="Cancelar" colorStyle="link" [mobile]="true" (click)="goToHome()"></app-button>
+        <app-button text="Salvar rascunho" colorStyle="outline" [mobile]="true" (click)="onSaveDraft()" [disabled]="scheduleForm.invalid"></app-button>
+        <app-button text="Agendar" colorStyle="blue" [mobile]="true" (click)="onSubmit()" [disabled]="scheduleForm.invalid"></app-button>
+      </div>
+    </div>
+  </div>
 </div>
+<app-modal id="sucessModal" [showModal]="showSuccessModal">
+  <div class="agendamento__modalOpenned">
+    <img src="assets/images/post-success.png" alt="Agendado com Sucesso!">
+    <span>Agendado com sucesso!</span>
+    <app-button text="OK" colorStyle="blue" (click)="goToList()"></app-button>
+  </div>
+</app-modal>
+<app-modal id="draftModal" [showModal]="showDraftModal">
+  <div class="agendamento__modalOpenned">
+    <img src="assets/images/post-success.png" alt="Agendado com Sucesso!">
+    <span>Rascunho salvo com sucesso!</span>
+    <app-button text="OK" colorStyle="blue" (click)="showDraftModal = false"></app-button>
+  </div>
+</app-modal>

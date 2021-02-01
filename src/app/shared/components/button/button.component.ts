@@ -9,6 +9,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class ButtonComponent {
   @Input() text: string;
   @Input() colorStyle: string = 'orange';
+  @Input() block?: boolean = false;
+  @Input() mobile?: boolean = false;
+  @Input() disabled?: boolean = false;
   @Output() action: EventEmitter<any> = new EventEmitter();
 
   public doAction() {

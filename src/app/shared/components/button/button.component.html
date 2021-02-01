@@ -1,3 +1,14 @@
-<button class="button" [ngClass]="{'button--blue': colorStyle === 'blue', 'button--orange': colorStyle === 'orange', 'button--outline': colorStyle === 'outline', 'button--link': colorStyle === 'link'}" type="button" (click)="doAction()">
+<button class="button"
+  [ngClass]="{
+    'button--blue': colorStyle === 'blue',
+    'button--orange': colorStyle === 'orange',
+    'button--outline': colorStyle === 'outline',
+    'button--link': colorStyle === 'link',
+    'button--block' : block,
+    'button--mobile': mobile
+  }"
+  type="button"
+  (click)="doAction()"
+  [disabled]="disabled">
   {{ text }}
 </button>

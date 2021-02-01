@@ -27,11 +27,21 @@ body {
       height: 100%;
     }
   }
+
+  &.modal--open {
+    overflow: hidden;
+  }
 }
 
 a {
   color: #1661F3;
   transition: .6s;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 .container {
