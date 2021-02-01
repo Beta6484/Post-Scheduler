@@ -117,4 +117,13 @@
       }
     }
   }
+
+  &_statusIcon{
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    vertical-align: middle;
+    border-radius: 50%;
+    margin-right: 6px;
+  }
 }
