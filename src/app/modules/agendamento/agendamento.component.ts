@@ -26,6 +26,7 @@ export class AgendamentoComponent implements OnInit {
   public showPostVisualization: boolean = true;
   public showSuccessModal: boolean = false;
   public showDraftModal: boolean = false;
+  public showCancelModal: boolean = false;
   public imageFromDraft: boolean = false;
   public postDateConfig = {
     locale: 'pt-br',
@@ -74,10 +75,7 @@ export class AgendamentoComponent implements OnInit {
     this.onFormChange();
     this.isMobile();
     this.checkDraft();
-  }
-
-  get f() {
-    return this.scheduleForm.controls;
+    console.log(this.scheduleForm)
   }
 
   public checkboxChanged(res: boolean, id: number) {
@@ -139,10 +137,6 @@ export class AgendamentoComponent implements OnInit {
         this.dbService.update('drafts', this.scheduleForm.value);
       }
     });
-  }
-
-  public trackByFn(index, item) {
-    return item.id;
   }
 
   public isMobile():boolean {

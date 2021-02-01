@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { NgxIndexedDBService } from 'ngx-indexed-db';
-import { forkJoin, Observable } from 'rxjs';
+import { forkJoin } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Schedule } from 'src/app/shared/models/schedule';
-import { SchedulesStatus } from 'src/app/shared/models/schedules-status';
-import { SocialNetworks } from 'src/app/shared/models/social-networks';
 
 @Component({
   selector: 'app-lista',
@@ -14,10 +11,9 @@ import { SocialNetworks } from 'src/app/shared/models/social-networks';
 })
 
 export class ListaComponent implements OnInit {
-  public schedulesList$: any;
-  private schedules$: Observable<Schedule[]>;
-  private schedulesStatus$: Observable<SchedulesStatus[]>;
-  private socialNetworks$: Observable<SocialNetworks[]>;
+  public schedulesList: any[];
+  public reverse: boolean = false;
+  public order: any = 'id';
 
   constructor(
     private title: Title,
@@ -27,11 +23,11 @@ export class ListaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.schedules$ = this.dbService.getAll('schedules');
-    this.schedulesStatus$ = this.dbService.getAll('schedules-status');
-    this.socialNetworks$ = this.dbService.getAll('social-networks');
-
-    this.schedulesList$ = forkJoin([this.schedules$, this.schedulesStatus$, this.socialNetworks$]).pipe(
+    forkJoin([
+      this.dbService.getAll('schedules'),
+      this.dbService.getAll('schedules-status'),
+      this.dbService.getAll('social-networks')
+    ]).pipe(
       map(([schedules, schedulesStatus, socialNetworks]) => {
         let schedulesList = [];
 
@@ -56,10 +52,14 @@ export class ListaComponent implements OnInit {
 
         return schedulesList;
       })
-    )
+    ).subscribe(res => this.schedulesList = res)
   }
 
-  public trackByFn(index, item) {
-    return item.id;
+  public setOrder(val) {
+    if(this.order == val) {
+      this.reverse = !this.reverse;
+    }
+
+    this.order = val;
   }
 }
