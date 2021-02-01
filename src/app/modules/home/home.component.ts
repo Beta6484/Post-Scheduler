@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
@@ -8,14 +8,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.scss']
 })
 
-export class HomeComponent implements OnInit {
+export class HomeComponent {
   constructor(
     private title: Title,
     private router: Router
-  ) {}
-
-  ngOnInit(): void {
-    this.title.setTitle('Bem Vindo ao Agendamento de Posts mLabs!')
+  ) {
+    this.title.setTitle('Bem Vindo ao Agendamento de Posts mLabs!');
   }
 
   public goToScheduler() {

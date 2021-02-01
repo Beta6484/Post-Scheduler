@@ -7,4 +7,85 @@
     color: #4F4F4F;
     margin-bottom: 25px;
   }
+
+  &__tableWrapper {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  &__table {
+    border-collapse: collapse;
+
+    thead {
+      font-size: 16px;
+      background-color: #FFFFFF;
+
+      th {
+        font-weight: 500;
+        text-align: left;
+        border-collapse: collapse;
+        padding: 16px;
+
+        &:not(:last-child) {
+          border-right: solid 1px #BDBDBD;
+        }
+      }
+    }
+
+    tbody {
+      font-weight: 500;
+
+      tr {
+        &:nth-child(even) {
+          background-color: #FFFFFF;
+        }
+
+        &:nth-child(odd) {
+          background-color: #F2F2F2;
+        }
+      }
+
+      td {
+        padding: 16px;
+
+        &:not(:last-child) {
+          border-right: solid 1px #BDBDBD;
+        }
+      }
+    }
+  }
+
+  &__socialIcons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__socialIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: #FFFFFF;
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+
+  &__mediaImage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
 }

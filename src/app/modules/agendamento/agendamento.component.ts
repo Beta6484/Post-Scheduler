@@ -54,10 +54,11 @@ export class AgendamentoComponent implements OnInit {
     private dbService: NgxIndexedDBService,
     private formBuilder: FormBuilder,
     private datePipe: DatePipe
-  ) {}
+  ) {
+    this.title.setTitle('Painel de Agendamento de Posts - mLabs');
+  }
 
   ngOnInit(): void {
-    this.title.setTitle('Painel de Agendamento de Posts - mLabs');
     this.postDateConfig.min = this.datePipe.transform(this.today, 'dd-MM-yyy');
     this.socialNetworks$ = this.dbService.getAll('social-networks');
     this.showPostVisualization = !this.isMobile();

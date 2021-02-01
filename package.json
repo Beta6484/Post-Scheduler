@@ -8,7 +8,6 @@
   },
   "description": "Projeto teste Angular 8 para mLabs",
   "scripts": {
-    "ng": "ng",
     "start": "ng serve --open",
     "build": "ng build",
     "test": "ng test",
