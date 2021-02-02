@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 
 export class FormatPostDatePipe implements PipeTransform {
-  transform(value: string): string {
+  transform(value: any): any {
     let res = new Date(value).toLocaleDateString('pt-br', {
       day: '2-digit',
       month: 'long'
