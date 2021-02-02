@@ -5,6 +5,7 @@ import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { NgxIndexedDBService } from 'ngx-indexed-db';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { ModalService } from 'src/app/shared/components/modal/services/modal.service';
 import { Schedule } from 'src/app/shared/models/schedule';
 
 @Component({
@@ -24,9 +25,6 @@ export class AgendamentoComponent implements OnInit {
   public selectedMedia: string | ArrayBuffer;
   public today = new Date();
   public showPostVisualization: boolean = true;
-  public showSuccessModal: boolean = false;
-  public showDraftModal: boolean = false;
-  public showCancelModal: boolean = false;
   public imageFromDraft: boolean = false;
   public postDateConfig = {
     locale: 'pt-br',
@@ -54,7 +52,8 @@ export class AgendamentoComponent implements OnInit {
     private router: Router,
     private dbService: NgxIndexedDBService,
     private formBuilder: FormBuilder,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private modalService: ModalService
   ) {
     this.title.setTitle('Painel de Agendamento de Posts - mLabs');
   }
@@ -122,13 +121,12 @@ export class AgendamentoComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    this.showSuccessModal = true;
     this.dbService.add('schedules', this.scheduleForm.value);
+
+    this.openModal('sucessModal');
   }
 
   public onSaveDraft(): void {
-    this.showDraftModal = true;
-
     this.dbService.getAll('drafts').subscribe(res => {
       if(res.length === 0) {
         this.dbService.add('drafts', this.scheduleForm.value);
@@ -137,6 +135,8 @@ export class AgendamentoComponent implements OnInit {
         this.dbService.update('drafts', this.scheduleForm.value);
       }
     });
+
+    this.openModal('draftModal');
   }
 
   public isMobile():boolean {
@@ -162,18 +162,25 @@ export class AgendamentoComponent implements OnInit {
   }
 
   public goToList(): void {
-    this.showSuccessModal = false;
     this.router.navigate(['lista']);
   }
 
-  private formatDateTime(date?, time?) {
+  public openModal(id): void {
+    this.modalService.open(id);
+  }
+
+  public closeModal(id): void {
+    this.modalService.close(id);
+  }
+
+  private formatDateTime(date, time) {
     let selectedDate = date ? this.datePipe.transform(date, 'mediumDate') : this.datePipe.transform(this.today, 'mediumDate');
     let selectedTime = time ? this.datePipe.transform(time, 'HH:mm:ss') : '00:00:00';
 
     return new Date(`${selectedDate}, ${selectedTime}`).toISOString();
   }
 
-  private checkDraft() {
+  private checkDraft():void {
     this.dbService.getAll('drafts').subscribe((res: Schedule[]) => {
       if(res.length === 0) {
         return;

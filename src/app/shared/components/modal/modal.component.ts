@@ -9,7 +9,7 @@ import { ModalService } from './services/modal.service';
 
 export class ModalComponent implements OnInit, OnDestroy {
   private element: any;
-  @Input() showModal: boolean = false;
+  public showModal: boolean = false;
   @Input() id: string;
   @Input() title?: string;
 
@@ -44,11 +44,11 @@ export class ModalComponent implements OnInit, OnDestroy {
 
   public open(): void {
     this.showModal = true;
-    document.body.classList.add('modal-open');
+    document.body.classList.add('modal--open');
   }
 
   public close(): void {
     this.showModal = false;
-    document.body.classList.remove('modal-open');
+    document.body.classList.remove('modal--open');
   }
 }

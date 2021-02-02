@@ -9,7 +9,7 @@
   "description": "Projeto teste Angular 8 para mLabs",
   "scripts": {
     "start": "ng serve --open",
-    "build": "ng build",
+    "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

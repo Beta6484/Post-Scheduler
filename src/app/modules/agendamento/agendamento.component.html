@@ -85,7 +85,7 @@
         </div>
         <div class="container__halfCol">
           <!-- Painel de visualização do post -->
-          <div class="agendamento__panel agendamento__postVisualization" *ngIf="showPostVisualization">
+          <div class="agendamento__panel" *ngIf="!isMobile()">
             <div class="agendamento__panelHeader">
               Visualização do post
               <button class="agendamento__closeVisualization" type="button" (click)="togglePostVisualization()" *ngIf="isMobile()">
@@ -98,7 +98,7 @@
               </div>
             </div>
           </div>
-          <app-button text="Visualizar post" colorStyle="orange" [block]="true" (action)="togglePostVisualization()" *ngIf="isMobile()"></app-button>
+          <app-button text="Visualizar post" colorStyle="orange" [block]="true" (action)="openModal('postVisualizationModal')" *ngIf="isMobile()"></app-button>
         </div>
       </div>
     </form>
@@ -106,31 +106,36 @@
   <div class="agendamento__footer">
     <div class="container">
       <div class="agendamento__actions">
-        <app-button text="Cancelar" colorStyle="link" [mobile]="true" (click)="scheduleForm.touched ? showCancelModal = true : goToHome()"></app-button>
+        <app-button text="Cancelar" colorStyle="link" [mobile]="true" (click)="scheduleForm.touched ? openModal('cancelModal') : goToHome()"></app-button>
         <app-button text="Salvar rascunho" colorStyle="outline" [mobile]="true" (click)="onSaveDraft()" [disabled]="scheduleForm.invalid"></app-button>
         <app-button text="Agendar" colorStyle="blue" [mobile]="true" (click)="onSubmit()" [disabled]="scheduleForm.invalid"></app-button>
       </div>
     </div>
   </div>
 </div>
-<app-modal id="sucessModal" *ngIf="showSuccessModal" [showModal]="showSuccessModal">
-  <div class="agendamento__modalOpenned">
-    <img src="assets/images/post-success.png" alt="Agendado com Sucesso!">
-    <span>Agendado com sucesso!</span>
-    <app-button text="OK" colorStyle="blue" (click)="goToList()"></app-button>
-  </div>
+
+<!-- Modais -->
+<app-modal id="postVisualizationModal" title="Visualização do post" *ngIf="isMobile()">
+  <app-post-preview [socialData$]="socialData$"></app-post-preview>
 </app-modal>
-<app-modal id="draftModal" *ngIf="showDraftModal" [showModal]="showDraftModal">
-  <div class="agendamento__modalOpenned">
-    <img src="assets/images/post-success.png" alt="Agendado com Sucesso!">
-    <span>Rascunho salvo com sucesso!</span>
-    <app-button text="OK" colorStyle="blue" (click)="showDraftModal = false"></app-button>
-  </div>
-</app-modal>
-<app-modal id="cancelModal" *ngIf="showCancelModal" [showModal]="showCancelModal">
+<app-modal id="cancelModal">
   <div class="agendamento__modalOpenned">
     <img src="assets/images/post-cancel.png" alt="Agendado com Sucesso!">
     <span>Seu agendamento não foi salvo, se você cancelar perderá todos os dados. Deseja continuar?</span>
-    <app-button text="Sim" colorStyle="blue" (click)="showCancelModal = false; goToHome()"></app-button>
+    <app-button text="Sim" colorStyle="blue" (click)="closeModal('cancelModal'); goToHome()"></app-button>
+  </div>
+</app-modal>
+<app-modal id="draftModal">
+  <div class="agendamento__modalOpenned">
+    <img src="assets/images/post-success.png" alt="Agendado com Sucesso!">
+    <span>Rascunho salvo com sucesso!</span>
+    <app-button text="OK" colorStyle="blue" (click)="closeModal('draftModal')"></app-button>
+  </div>
+</app-modal>
+<app-modal id="sucessModal">
+  <div class="agendamento__modalOpenned">
+    <img src="assets/images/post-success.png" alt="Agendado com Sucesso!">
+    <span>Agendado com sucesso!</span>
+    <app-button text="OK" colorStyle="blue" (click)="closeModal('sucessModal'); goToList()"></app-button>
   </div>
 </app-modal>

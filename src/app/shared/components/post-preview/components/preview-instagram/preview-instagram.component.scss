@@ -1,7 +1,7 @@
 .previewInstagram {
   display: block;
   position: relative;
-  width: calc(100vw - 40px);
+  width: 320px;
   margin: 20px;
 
   &__card {
@@ -42,8 +42,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: auto;
+    width: 320px;
+    height: 320px;
+    overflow: hidden;
 
     img {
       width: auto;
@@ -95,7 +96,6 @@
     &__image {
       width: 368px;
       height: 368px;
-      overflow: hidden;
     }
   }
 }

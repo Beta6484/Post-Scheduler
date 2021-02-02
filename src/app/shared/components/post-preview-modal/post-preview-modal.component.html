@@ -1,6 +1,6 @@
-<div class="postPreviewModal">
-  <button class="postPreviewModal__button" (click)="showModal = true">Preview</button>
-  <app-modal id="postModal" *ngIf="showModal" [showModal]="showModal" title="Visualização do post">
+<div class="postPreviewModal" *ngIf="socialData$ | async as socialData">
+  <button class="postPreviewModal__button" (click)="openModal('postModal-' + socialData.id)">Preview</button>
+  <app-modal [id]="'postModal-' + socialData.id" title="Visualização do post">
     <app-post-preview [socialData$]="socialData$"></app-post-preview>
   </app-modal>
 </div>

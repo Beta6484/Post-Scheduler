@@ -28,7 +28,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of schedulesList | orderBy: order : reverse : 'case-insensitive'">
+          <tr *ngFor="let item of schedulesList | orderBy: order : reverse : false">
             <td class="text-center">
               <div class="lista__socialIcons">
                 <span class="lista__socialIcon" *ngFor="let social of item.socialNetworks" [ngStyle]="{'background-color': social.color}">
