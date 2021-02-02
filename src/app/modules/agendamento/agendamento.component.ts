@@ -7,6 +7,7 @@ import { NgxIndexedDBService } from 'ngx-indexed-db';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ModalService } from 'src/app/shared/components/modal/services/modal.service';
 import { Schedule } from 'src/app/shared/models/schedule';
+import { DateConfig, TimeConfig } from 'src/app/shared/utils/date-picker-config';
 
 @Component({
   selector: 'app-agendamento',
@@ -25,21 +26,8 @@ export class AgendamentoComponent implements OnInit {
   public selectedMedia: string | ArrayBuffer;
   public today = new Date();
   public imageFromDraft: boolean = false;
-  public postDateConfig = {
-    locale: 'pt-br',
-    format: 'DD/MM/YYYY',
-    closeOnSelect: true,
-    allowMultiSelect: false,
-    min: ''
-  };
-  public postTimeConfig = {
-    locale: 'pt-br',
-    format: 'HH:mm',
-    closeOnSelect: true,
-    allowMultiSelect: false,
-    showTwentyFourHours: true,
-    disableKeypress: true
-  };
+  public postDateConfig = DateConfig;
+  public postTimeConfig = TimeConfig;
 
   @HostListener('window:resize', ['$event']) onResize(event) {
     this.isMobile();
@@ -71,7 +59,6 @@ export class AgendamentoComponent implements OnInit {
     this.onFormChange();
     this.isMobile();
     this.checkDraft();
-    console.log(this.scheduleForm)
   }
 
   public checkboxChanged(res: boolean, id: number) {
@@ -94,7 +81,6 @@ export class AgendamentoComponent implements OnInit {
   }
 
   public datePickerChanged(res): void {
-    console.log(res);
     this.selectedPostDate = res.date;
     this.scheduleForm.controls['publication_date'].patchValue(this.formatDateTime(this.selectedPostDate, this.selectedPostTime));
   }

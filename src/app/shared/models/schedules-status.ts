@@ -1,5 +1,5 @@
 export interface SchedulesStatus {
-  id: number,
-  name: string,
-  color: string
+  color: string,
+  id?: number,
+  name: string
 }
