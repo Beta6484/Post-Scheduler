@@ -24,7 +24,6 @@ export class AgendamentoComponent implements OnInit {
   public selectedPostTime: string;
   public selectedMedia: string | ArrayBuffer;
   public today = new Date();
-  public showPostVisualization: boolean = true;
   public imageFromDraft: boolean = false;
   public postDateConfig = {
     locale: 'pt-br',
@@ -39,12 +38,11 @@ export class AgendamentoComponent implements OnInit {
     closeOnSelect: true,
     allowMultiSelect: false,
     showTwentyFourHours: true,
-    disableKeypress: false
+    disableKeypress: true
   };
 
   @HostListener('window:resize', ['$event']) onResize(event) {
     this.isMobile();
-    this.showPostVisualization = !this.isMobile();
   }
 
   constructor(
@@ -61,7 +59,6 @@ export class AgendamentoComponent implements OnInit {
   ngOnInit(): void {
     this.postDateConfig.min = this.datePipe.transform(this.today, 'dd-MM-yyy');
     this.socialNetworks$ = this.dbService.getAll('social-networks');
-    this.showPostVisualization = !this.isMobile();
 
     this.scheduleForm = this.formBuilder.group({
       media: ['', Validators.required],
@@ -141,14 +138,6 @@ export class AgendamentoComponent implements OnInit {
 
   public isMobile():boolean {
     return window.innerWidth < 992;
-  }
-
-  public isNullOrEmpty(value: string):boolean {
-    return (value == null || value.length == 0);
-  }
-
-  public togglePostVisualization(): void {
-    this.showPostVisualization = !this.showPostVisualization;
   }
 
   public goToHome(): void {
