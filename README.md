@@ -5,7 +5,7 @@ Simulação de agendamento de posts para o teste de desenvolvedor Angular Pleno 
 ## Rodando o projeto
 
 1. Execute o comando `npm i` ou `npm install` para instalar as dependências do projeto.
-2. Execute o comando `npm start` para rodar o projeto em modo desenvolvimento. O browser abrirá automaticamente na URL `http://localhost:4200/`.
+2. Execute o comando `npm start` para rodar o projeto em modo desenvolvimento. O browser abrirá automaticamente no URL `http://localhost:4200/`.
 
 ## Build
 
@@ -26,3 +26,11 @@ Acesse o projeto online na plataforma [Netlify](https://mlabs-post-scheduler.net
 - Para simular um backend e garantir a persistência dos dados foi utilizado o serviço [ngx-indexed-db](https://github.com/assuncaocharles/ngx-indexed-db);
   - Na abertura da aplicação são criadas base de dados com os dados dos arquivos `schedules.json`, `schedules-status.json` e `social-networks.json` que passam então a ser consumidas através do serviço [ngx-indexed-db](https://github.com/assuncaocharles/ngx-indexed-db);
   - As imagens armazenadas em tempo de execução são convertidas em Base64 para viabilizar e facilitar o armazenamento no backend simulado.
+- A listagem de agendamentos é acessada quando um post é agendado com sucesso. Para visualizar esta página a qualquer momento basta acessar a rota `/lista`. Observação: Parece que o [Netlify](https://mlabs-post-scheduler.netlify.app/) tem algum problema com acessos editando o URL na barra de endereços.
+
+## Melhorias sugeridas
+
+- Tratamento de erros especializados para as requisições;
+- Indicação visual de carregamento de conteúdo;
+- Foco em acessibilidade desde o layout;
+- Trabalhar o SASS com variáveis, mixins, etc.

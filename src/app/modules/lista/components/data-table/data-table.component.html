@@ -1,0 +1,78 @@
+<div class="dataTable">
+  <div class="dataTable__filter">
+    Filtrar por status
+    <div class="dataTable__filterButtons">
+      <button type="button" [ngClass]="{'active': !activeStatus}" (click)="filterByStatus()">
+        <i class="dataTable__statusIcon" [style.background-color]="!activeStatus ? '#BDBDBD' : 'transparent'"></i>
+        Todos
+      </button>
+      <button type="button" *ngFor="let item of statusList" [ngClass]="{'active': activeStatus === item.id}" (click)="filterByStatus(item.id)">
+        <i class="dataTable__statusIcon" [style.background-color]="(activeStatus === item.id) ? item.color : 'transparent'" [ngStyle]="{'background-color': item.color}"></i>
+        {{ item.name }}
+      </button>
+    </div>
+  </div>
+  <table class="dataTable__table">
+    <thead>
+      <tr>
+        <th scope="col">Redes sociais</th>
+        <th scope="col">Mídia</th>
+        <th scope="col">Texto</th>
+        <th scope="col">Data
+          <app-order-button
+            [active]="order === 'publication_date'"
+            [order]="order"
+            [reverse]="reverse"
+            (action)="setOrder('publication_date')"
+          ></app-order-button>
+        </th>
+        <th scope="col">Ações</th>
+        <th scope="col">Status
+          <app-order-button
+            [active]="order === 'status.name'"
+            [order]="order"
+            [reverse]="reverse"
+            (action)="setOrder('status.name')"
+          ></app-order-button>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of schedulesList | orderBy: order : reverse : false">
+        <td>
+          <div class="dataTable__socialIcons">
+            <span class="dataTable__socialIcon" *ngFor="let social of item.socialNetworks" [ngStyle]="{'background-color': social.color}">
+              <i [class]="'fab fa-' + social.icon"></i>
+            </span>
+          </div>
+        </td>
+        <td>
+          <div class="dataTable__mediaImage">
+            <img [src]="item.media" alt="Imagem do post">
+          </div>
+        </td>
+        <td>
+          <div class="dataTable__text">
+            {{ item.text }}
+          </div>
+        </td>
+        <td>
+          <div class="dataTable__dateTime">
+            {{ item.publication_date | formatPostDateTime }}
+          </div>
+        </td>
+        <td>
+          <div class="dataTable__preview">
+            <app-post-preview-modal [socialData]="item"></app-post-preview-modal>
+          </div>
+        </td>
+        <td>
+          <div class="dataTable__status">
+            <i class="dataTable__statusIcon" [ngStyle]="{'background-color': item.status.color}"></i>
+            {{ item.status.name }}
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

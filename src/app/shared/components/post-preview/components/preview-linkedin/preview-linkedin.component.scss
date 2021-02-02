@@ -39,18 +39,17 @@
   }
 
   &__socialUserName {
-    font-weight: 500;
     color: #000000;
     margin-bottom: 5px;
   }
 
   &__socialPostDate {
     font-size: 12px;
+    font-weight: normal;
     color: #828282;
   }
 
   &__postText {
-    font-weight: 500;
     color: #4F4F4F;
     overflow-wrap: break-word;
     padding: 0 15px 15px ;
@@ -67,13 +66,14 @@
     img {
       width: auto;
       height: auto;
-      max-width: 100%;
-      max-height: 100%;
+      min-width: 100%;
+      min-height: 100%;
     }
   }
 
   &__comments {
     font-size: 12px;
+    font-weight: normal;
     color: #828282;
     padding: 10px 15px;
   }

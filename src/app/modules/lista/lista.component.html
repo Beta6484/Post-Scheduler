@@ -2,57 +2,7 @@
   <div class="container">
     <div class="lista__title">Listagem de agendamento</div>
     <div class="lista__tableWrapper">
-      <table class="lista__table">
-        <thead>
-          <tr>
-            <th scope="col">Redes sociais</th>
-            <th scope="col">Mídia</th>
-            <th scope="col">Texto</th>
-            <th scope="col">
-              Data
-              <button type="button" class="lista__sort" (click)="setOrder('publication_date')" [class.active]="order === 'publication_date'">
-                <i class="lista__sortPlaceholder fas fa-arrow-down"></i>
-                <span class="lista__sortArrow" *ngIf="reverse"><i class="fas fa-arrow-down"></i></span>
-                <span class="lista__sortArrow" *ngIf="!reverse"><i class="fas fa-arrow-up"></i></span>
-              </button>
-            </th>
-            <th scope="col">Ações</th>
-            <th scope="col">
-              Status
-              <button type="button" class="lista__sort" (click)="setOrder('status.name')" [class.active]="order === 'status.name'">
-                <i class="lista__sortPlaceholder fas fa-arrow-down"></i>
-                <span class="lista__sortArrow" *ngIf="reverse"><i class="fas fa-arrow-down"></i></span>
-                <span class="lista__sortArrow" *ngIf="!reverse"><i class="fas fa-arrow-up"></i></span>
-              </button>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of schedulesList | orderBy: order : reverse : false">
-            <td class="text-center">
-              <div class="lista__socialIcons">
-                <span class="lista__socialIcon" *ngFor="let social of item.socialNetworks" [ngStyle]="{'background-color': social.color}">
-                  <i [class]="'fab fa-' + social.icon"></i>
-                </span>
-              </div>
-            </td>
-            <td class="text-center">
-              <div class="lista__mediaImage">
-                <img [src]="item.media" alt="Imagem do post">
-              </div>
-            </td>
-            <td class="breakable">{{ item.text }}</td>
-            <td>{{ item.publication_date | date: 'dd/MM/yyyy, HH:mm' }}</td>
-            <td class="text-center">
-              <app-post-preview-modal [socialData]="item"></app-post-preview-modal>
-            </td>
-            <td>
-              <i class="lista_statusIcon" [ngStyle]="{'background-color': item.status.color}"></i>
-              {{ item.status.name }}
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <app-data-table></app-data-table>
     </div>
   </div>
 </div>

@@ -32,6 +32,7 @@ export class MockDataService {
         let data: [] = res['data'];
         data.forEach((item: Schedule) => {
           this.schedulesService.post({
+            id: item.id,
             social_network_key: item.social_network_key,
             media: item.media,
             text: item.text,
@@ -52,6 +53,7 @@ export class MockDataService {
         let data: [] = res['data'];
         data.forEach((item: SchedulesStatus) => {
           this.schedulesStatusService.post({
+            id: item.id,
             name: item.name,
             color: item.color
           });
@@ -69,6 +71,7 @@ export class MockDataService {
         let data: [] = res['data'];
         data.forEach((item: SocialNetworks) => {
           this.socialNetworksService.post({
+            id: item.id,
             name: item.name,
             icon: item.icon,
             status: item.status,

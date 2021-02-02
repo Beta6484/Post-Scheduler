@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormatPostDataPipe } from '../../pipes/format-post-data';
+import { FormatPostDatePipe } from '../../pipes/format-post-date';
 import { PreviewInstagramComponent, PreviewLinkedinComponent } from './components';
 import { PostPreviewComponent } from './post-preview.component';
 
@@ -10,7 +10,7 @@ import { PostPreviewComponent } from './post-preview.component';
     PostPreviewComponent,
     PreviewInstagramComponent,
     PreviewLinkedinComponent,
-    FormatPostDataPipe
+    FormatPostDatePipe
   ],
   imports: [
     CommonModule,

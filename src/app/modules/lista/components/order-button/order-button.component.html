@@ -1,0 +1,8 @@
+<button class="orderButton" type="button" (click)="doAction($event)" [class.active]="active">
+  <span class="orderButton__sortArrow" *ngIf="toggleReverse()">
+    <i class="fas fa-arrow-up"></i>
+  </span>
+  <span class="orderButton__sortArrow" *ngIf="!toggleReverse()">
+    <i class="fas fa-arrow-down"></i>
+  </span>
+</button>
