@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { NgxIndexedDBService } from 'ngx-indexed-db';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { SocialNetworks } from '../../models/social-networks';
+import { SocialNetworks } from '../../models';
 
 @Injectable({
   providedIn: 'root'

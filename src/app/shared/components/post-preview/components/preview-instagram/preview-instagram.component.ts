@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Schedule } from 'src/app/shared/models/schedule';
+import { Schedule } from 'src/app/shared/models';
 
 @Component({
   selector: 'app-preview-instagram',

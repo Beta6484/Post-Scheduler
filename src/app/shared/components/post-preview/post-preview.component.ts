@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Schedule } from '../../models/schedule';
+import { Schedule } from '../../models';
 
 @Component({
   selector: 'app-post-preview',

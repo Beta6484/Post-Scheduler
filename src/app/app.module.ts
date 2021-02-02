@@ -4,11 +4,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { ROUTES } from './app.routes';
-import { DatabaseModule } from './database/database.module';
-import { AgendamentoModule } from './modules/agendamento/agendamento.module';
-import { HomeModule } from './modules/home/home.module';
-import { ListaModule } from './modules/lista/lista.module';
-import { HeaderModule } from './shared/components/header/header.module';
+import { DatabaseModule } from './database';
+import { AgendamentoModule } from './modules/agendamento';
+import { HomeModule } from './modules/home';
+import { ListaModule } from './modules/lista';
+import { HeaderModule } from './shared/components/header';
 
 @NgModule({
   declarations: [

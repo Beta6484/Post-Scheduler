@@ -5,8 +5,8 @@ import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { NgxIndexedDBService } from 'ngx-indexed-db';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { ModalService } from 'src/app/shared/components/modal/services/modal.service';
-import { Schedule } from 'src/app/shared/models/schedule';
+import { ModalService } from 'src/app/shared/components/modal';
+import { Schedule } from 'src/app/shared/models';
 import { DateConfig, TimeConfig } from 'src/app/shared/utils/date-picker-config';
 
 @Component({

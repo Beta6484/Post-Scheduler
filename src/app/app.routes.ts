@@ -3,14 +3,14 @@ import { Routes } from "@angular/router";
 export const ROUTES: Routes = [
   {
     path: 'home',
-    loadChildren: './modules/home/home.module#HomeModule',
+    loadChildren: './modules/home#HomeModule',
   },
   {
     path: 'agendamento',
-    loadChildren: './modules/agendamento/agendamento.module#AgendamentoModule'
+    loadChildren: './modules/agendamento#AgendamentoModule'
   },
   {
     path: 'lista',
-    loadChildren: './modules/lista/lista.module#ListaModule'
+    loadChildren: './modules/lista#ListaModule'
   }
 ]

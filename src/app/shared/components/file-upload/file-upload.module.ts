@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { DragNDropDirective } from '../../directives/dragndrop.directive';
-import { ButtonModule } from '../button/button.module';
+import { DragNDropDirective } from '../../directives/drag-n-drop';
+import { ButtonModule } from '../button';
 import { FileUploadComponent } from './file-upload.component';
 
 @NgModule({

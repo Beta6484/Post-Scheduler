@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ModalModule } from '../modal/modal.module';
-import { PostPreviewModule } from '../post-preview/post-preview.module';
+import { ModalModule } from '../modal';
+import { PostPreviewModule } from '../post-preview';
 import { PostPreviewModalComponent } from './post-preview-modal.component';
 
 @NgModule({

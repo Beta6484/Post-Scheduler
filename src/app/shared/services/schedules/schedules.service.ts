@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { NgxIndexedDBService } from 'ngx-indexed-db';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Schedule } from '../../models/schedule';
+import { Schedule } from '../../models';
 
 @Injectable({
   providedIn: 'root'
