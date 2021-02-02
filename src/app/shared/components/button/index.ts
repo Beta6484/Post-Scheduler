@@ -1,1 +1,2 @@
-export * from './button.module';
+export { ButtonModule } from './button.module';
+

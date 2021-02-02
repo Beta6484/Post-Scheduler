@@ -1,1 +1,2 @@
-export * from './post-preview.module';
+export { PostPreviewModule } from './post-preview.module';
+

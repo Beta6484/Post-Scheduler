@@ -1,1 +1,2 @@
-export * from './date-picker-config';
+export { DateConfig, TimeConfig } from './date-picker-config';
+

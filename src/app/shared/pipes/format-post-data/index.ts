@@ -1,1 +1,2 @@
-export * from './format-post-data.pipe';
+export { FormatPostDataPipe } from './format-post-data.pipe';
+

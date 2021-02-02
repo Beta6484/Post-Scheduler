@@ -1,1 +1,2 @@
-export * from './emoji-picker.module';
+export { EmojiPickerModule } from './emoji-picker.module';
+

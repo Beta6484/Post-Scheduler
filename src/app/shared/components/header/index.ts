@@ -1,1 +1,2 @@
-export * from './header.module';
+export { HeaderModule } from './header.module';
+

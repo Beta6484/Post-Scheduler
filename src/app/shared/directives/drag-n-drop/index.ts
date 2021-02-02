@@ -1,1 +1,2 @@
-export * from './drag-n-drop.directive';
+export { DragNDropDirective } from './drag-n-drop.directive';
+

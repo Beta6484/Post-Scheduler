@@ -1,1 +1,2 @@
-export * from './custom-checkbox.module';
+export { CustomCheckboxModule } from './custom-checkbox.module';
+

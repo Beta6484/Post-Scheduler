@@ -1,1 +1,2 @@
-export * from './mock-data.service';
+export { MockDataService } from './mock-data.service';
+

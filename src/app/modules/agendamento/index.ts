@@ -1,1 +1,2 @@
-export * from './agendamento.module';
+export { AgendamentoModule } from './agendamento.module';
+

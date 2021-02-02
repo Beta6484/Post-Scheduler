@@ -1,1 +1,2 @@
-export * from './lista.module';
+export { ListaModule } from './lista.module';
+

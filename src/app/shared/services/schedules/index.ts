@@ -1,1 +1,2 @@
-export * from './schedules.service';
+export { SchedulesService } from './schedules.service';
+
