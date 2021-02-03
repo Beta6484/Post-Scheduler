@@ -11,10 +11,12 @@ import { ModalModule } from 'src/app/shared/components/modal';
 import { PostPreviewModule } from 'src/app/shared/components/post-preview';
 import { AgendamentoComponent } from './agendamento.component';
 import { ROUTES } from './agendamento.routes';
+import { FieldSocialNetworksComponent } from './components';
 
 @NgModule({
   declarations: [
-    AgendamentoComponent
+    AgendamentoComponent,
+    FieldSocialNetworksComponent
   ],
   imports: [
     CommonModule,

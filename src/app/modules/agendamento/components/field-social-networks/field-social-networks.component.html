@@ -1,0 +1,19 @@
+<div class="fieldSocialNetworks">
+  <div class="panel">
+    <div class="panel__header">
+      Redes sociais
+    </div>
+    <div class="panel__body">
+      <div class="fieldSocialNetworks__list">
+        <app-custom-checkbox
+          *ngFor="let item of socialNetworks; let i = index"
+          [value]="item.id"
+          [icon]="item.icon"
+          [disabled]="item.status === 'disabled'"
+          [(ngModel)]="socialNetworks[i].checked"
+          (ngModelChange)="getSelected($event, item.id)"
+        ></app-custom-checkbox>
+      </div>
+    </div>
+  </div>
+</div>

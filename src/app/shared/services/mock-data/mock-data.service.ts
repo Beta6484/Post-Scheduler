@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Schedule, SchedulesStatus, SocialNetworks } from '../../models';
-import { SchedulesStatusService } from '../schedules-status/schedules-status.service';
-import { SchedulesService } from '../schedules/schedules.service';
-import { SocialNetworksService } from '../social-networks/social-networks.service';
+import { SchedulesService } from '../schedules';
+import { SchedulesStatusService } from '../schedules-status';
+import { SocialNetworksService } from '../social-networks';
 
 @Injectable({
   providedIn: 'root'

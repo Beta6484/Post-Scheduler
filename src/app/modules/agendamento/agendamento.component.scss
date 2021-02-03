@@ -1,6 +1,7 @@
 .agendamento {
   padding: 20px 0 0;
 
+  // APAGAR DEPOIS DE TUDO PRONTO
   &__panel {
     display: flex;
     flex-direction: column;
@@ -28,11 +29,8 @@
     padding: 10px 16px;
   }
 
-  &__socialNetworks {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+  // APAGAR DEPOIS DE TUDO PRONTO
+
 
   &__datePicker {
     display: flex;

@@ -4,7 +4,7 @@ import { map } from 'rxjs/operators';
 import { Schedule, SchedulesStatus } from 'src/app/shared/models';
 import { SchedulesService } from 'src/app/shared/services/schedules';
 import { SchedulesStatusService } from 'src/app/shared/services/schedules-status';
-import { SocialNetworksService } from 'src/app/shared/services/social-networks/social-networks.service';
+import { SocialNetworksService } from 'src/app/shared/services/social-networks';
 
 @Component({
   selector: 'app-data-table',

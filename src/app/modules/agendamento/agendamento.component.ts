@@ -61,23 +61,12 @@ export class AgendamentoComponent implements OnInit {
     this.checkDraft();
   }
 
-  public checkboxChanged(res: boolean, id: number) {
-    if(res === true) {
-      if(this.selectedSocialNetworks.includes(id)) {
-        return;
-      } else {
-        this.selectedSocialNetworks.push(id);
-        this.scheduleForm.controls['social_network_key'].patchValue(this.selectedSocialNetworks);
-      }
-    } else {
-      if(this.selectedSocialNetworks.includes(id)) {
-        const index = this.selectedSocialNetworks.indexOf(id);
-        this.selectedSocialNetworks.splice(index, 1);
-        this.scheduleForm.controls['social_network_key'].patchValue(this.selectedSocialNetworks);
-      } else {
-        return;
-      }
-    }
+  public getSocialNetworkVal(res: number[]): void {
+    this.scheduleForm.controls['social_network_key'].patchValue(res);
+  }
+
+  public getDateTimeVal(res: string): void {
+    console.log(res);
   }
 
   public datePickerChanged(res): void {

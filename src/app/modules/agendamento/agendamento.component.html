@@ -4,25 +4,11 @@
       <div class="container__row">
         <div class="container__halfCol">
           <div class="container__row">
-            <!-- Painel de redes sociais -->
             <div class="container__halfCol">
-              <div class="agendamento__panel">
-                <div class="agendamento__panelHeader">
-                  Redes sociais
-                </div>
-                <div class="agendamento__panelBody">
-                  <div class="agendamento__socialNetworks">
-                    <app-custom-checkbox
-                      *ngFor="let item of socialNetworks$ | async"
-                      [icon]="item.icon"
-                      [disabled]="item.status == 'disabled' ? true : false"
-                      [checked]="selectedSocialNetworks.includes(item.id)"
-                      (change)="checkboxChanged($event.target.checked, item.id)"
-                    ></app-custom-checkbox>
-                  </div>
-                </div>
-              </div>
+              <app-field-social-networks (onSelect)="getSocialNetworkVal($event)"></app-field-social-networks>
             </div>
+
+
 
             <!-- Painel de seleção de data e hora -->
             <div class="container__halfCol">

@@ -6,13 +6,6 @@
   box-sizing: border-box;
 }
 
-a, button, input, textarea {
-  &:focus {
-    outline: none;
-    box-shadow: 0px 0px 2px 1px #F2994A;
-  }
-}
-
 html {
   font-size: 14px;
 }
@@ -28,7 +21,7 @@ body {
     flex-direction: column;
     min-height: 100vh;
 
-    app-home, app-agendamento, app-lista, app-file-upload, app-post-preview {
+    app-home, app-agendamento, app-lista {
       display: flex;
       flex-direction: column;
       flex-grow: 1;
@@ -52,6 +45,15 @@ button {
   cursor: pointer;
 }
 
+a, button, input, textarea {
+  &:focus {
+    outline: none;
+    box-shadow: 0px 0px 2px 1px #F2994A;
+  }
+}
+
+
+// CONTAINER
 .container {
   width: 100%;
   padding: 0 20px;
@@ -64,23 +66,53 @@ button {
     margin: 0 -20px;
   }
 
-  &__fullCol {
+  &__fullCol, &__halfCol {
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
     width: 100%;
     padding: 0 20px;
     margin-bottom: 20px;
-  }
 
-  &__halfCol {
-    width: 100%;
-    padding: 0 20px;
-    margin-bottom: 20px;
+    & > * {
+      flex-grow: 1;
+    }
   }
 }
+
+
+// PAINEL
+.panel {
+  display: flex;
+  flex-direction: column;
+  background-color: #FFFFFF;
+  border: solid 1px #E0E0E0;
+  border-radius: 4px;
+  height: 100%;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 0;
+    font-size: 16px;
+    color: #333333;
+    border-bottom: solid 1px #E0E0E0;
+    padding: 10px 16px;
+  }
+
+  &__body {
+    flex-grow: 1;
+    padding: 10px 16px;
+  }
+}
+
 
 // HELPERS
 .mb-0 {
   margin-bottom: 0 !important;
 }
+
 
 // COMPONENTES EXTERNOS
 .agendamento__datePicker {
@@ -121,6 +153,7 @@ button {
     display: none;
   }
 }
+
 
 // RESPONSIVE
 @media (min-width: 992px) {

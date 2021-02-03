@@ -1,0 +1,15 @@
+.fieldSocialNetworks {
+  height: 100%;
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & > * {
+      &:not(:last-child) {
+        margin-right: 5px;
+      }
+    }
+  }
+}

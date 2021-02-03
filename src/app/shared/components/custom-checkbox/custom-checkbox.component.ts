@@ -13,14 +13,15 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 
 export class CustomCheckboxComponent implements ControlValueAccessor  {
-  public onChange = (_ => { });
+  public isChecked: boolean = false;
   public onBlur = (_ => { });
-  @Input() checked: boolean = false;
-  @Input() icon: string = 'angular';
+  public onChange = (_ => { });
+  @Input() value: string;
+  @Input() icon: string;
   @Input() disabled: boolean = false;
 
   public writeValue(obj: boolean): void {
-    this.checked = obj;
+    this.isChecked = obj;
   }
 
   public registerOnChange(fn: any): void {
@@ -36,7 +37,7 @@ export class CustomCheckboxComponent implements ControlValueAccessor  {
   }
 
   public onChanged($event) {
-    this.checked = $event && $event.target && $event.target.checked;
-    this.onChange(this.checked);
+    this.isChecked = $event && $event.target && $event.target.checked;
+    this.onChange(this.isChecked);
   }
 }

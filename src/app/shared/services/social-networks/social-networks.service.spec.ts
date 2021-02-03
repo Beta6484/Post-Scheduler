@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
-
 import { SocialNetworksService } from './social-networks.service';
+
 
 describe('SocialNetworksService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
