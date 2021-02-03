@@ -15,8 +15,8 @@ export class FormatPostDateTimePipe implements PipeTransform {
       hour: '2-digit',
       minute:'2-digit',
       hour12: false
-    })
+    });
 
-    return `${resDate} às ${resTime}h`
+    return `${resDate} às ${resTime}h`;
   }
 }

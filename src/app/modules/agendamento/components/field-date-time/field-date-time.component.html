@@ -1,0 +1,31 @@
+<div class="fieldDateTime">
+  <div class="panel">
+    <div class="panel__header">
+      Data de publicação
+    </div>
+    <div class="panel__body">
+      <div class="fieldDateTime__inputs">
+        <div class="fieldDateTime__inputDate">
+          <i class="fieldDateTime__inputIcon fas fa-calendar-alt"></i>
+          <dp-date-picker
+            [config]="postDateConfig"
+            [placeholder]="initialVal ? (initialVal | date: 'dd/MM/yyyy') : 'DD/MM'"
+            [mode]="'day'"
+            [(ngModel)]="selectedDate"
+            (onSelect)="getSelectedDate($event)"
+          ></dp-date-picker>
+        </div>
+        <div class="fieldDateTime__inputTime">
+          <i class="fieldDateTime__inputIcon fas fa-clock"></i>
+          <dp-date-picker
+            [config]="postTimeConfig"
+            [placeholder]="initialVal ? (initialVal | date: 'HH:mm') : 'HH/MM'"
+            [mode]="'time'"
+            [(ngModel)]="selectedTime"
+            (onSelect)="getSelectedTime($event)"
+          ></dp-date-picker>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

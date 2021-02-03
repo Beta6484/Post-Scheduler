@@ -70,6 +70,7 @@ a, button, input, textarea {
     display: flex;
     justify-content: stretch;
     align-items: stretch;
+    flex-direction: column;
     width: 100%;
     padding: 0 20px;
     margin-bottom: 20px;
@@ -115,30 +116,13 @@ a, button, input, textarea {
 
 
 // COMPONENTES EXTERNOS
-.agendamento__datePicker {
-  .agendamento__date, .agendamento__time {
-    position: relative;
-    width: 46%;
-
-    .svg-inline--fa {
-      position: absolute;
-      left: 8px;
-      top: calc(50% - 7px);
-      z-index: 10;
-      color: #4F4F4F;
-    }
-  }
-
-  dp-date-picker {
+dp-date-picker {
+  input {
+    border: solid 1px #949494;
+    border-radius: 4px;
+    color: #828282;
     max-width: 100%;
-
-    input {
-      border: solid 1px #949494;
-      border-radius: 4px;
-      color: #828282;
-      max-width: 100%;
-      padding: 10px 16px 10px 30px;
-    }
+    padding: 10px 16px 10px 30px;
   }
 }
 

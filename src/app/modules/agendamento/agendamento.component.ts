@@ -1,10 +1,9 @@
-import { DatePipe } from '@angular/common';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { NgxIndexedDBService } from 'ngx-indexed-db';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { ModalService } from 'src/app/shared/components/modal';
 import { Schedule } from 'src/app/shared/models';
 import { DateConfig, TimeConfig } from 'src/app/shared/utils/date-picker-config';
@@ -12,13 +11,11 @@ import { DateConfig, TimeConfig } from 'src/app/shared/utils/date-picker-config'
 @Component({
   selector: 'app-agendamento',
   templateUrl: './agendamento.component.html',
-  styleUrls: ['./agendamento.component.scss'],
-  providers: [DatePipe]
+  styleUrls: ['./agendamento.component.scss']
 })
 
 export class AgendamentoComponent implements OnInit {
   public scheduleForm: FormGroup;
-  public socialNetworks$: Observable<any>;
   public socialData$: BehaviorSubject<any> = new BehaviorSubject<any>({});
   public selectedSocialNetworks: number[] = [];
   public selectedPostDate: string;
@@ -38,16 +35,12 @@ export class AgendamentoComponent implements OnInit {
     private router: Router,
     private dbService: NgxIndexedDBService,
     private formBuilder: FormBuilder,
-    private datePipe: DatePipe,
     private modalService: ModalService
   ) {
     this.title.setTitle('Painel de Agendamento de Posts - mLabs');
   }
 
   ngOnInit(): void {
-    this.postDateConfig.min = this.datePipe.transform(this.today, 'dd-MM-yyy');
-    this.socialNetworks$ = this.dbService.getAll('social-networks');
-
     this.scheduleForm = this.formBuilder.group({
       media: ['', Validators.required],
       publication_date: ['', Validators.required],
@@ -66,17 +59,7 @@ export class AgendamentoComponent implements OnInit {
   }
 
   public getDateTimeVal(res: string): void {
-    console.log(res);
-  }
-
-  public datePickerChanged(res): void {
-    this.selectedPostDate = res.date;
-    this.scheduleForm.controls['publication_date'].patchValue(this.formatDateTime(this.selectedPostDate, this.selectedPostTime));
-  }
-
-  public timePickerChanged(res): void {
-    this.selectedPostTime = res.date;
-    this.scheduleForm.controls['publication_date'].patchValue(this.formatDateTime(this.selectedPostDate, this.selectedPostTime));
+    this.scheduleForm.controls['publication_date'].patchValue(res);
   }
 
   public emojiSelected(res): void  {
@@ -135,13 +118,6 @@ export class AgendamentoComponent implements OnInit {
 
   public closeModal(id): void {
     this.modalService.close(id);
-  }
-
-  private formatDateTime(date, time) {
-    let selectedDate = date ? this.datePipe.transform(date, 'mediumDate') : this.datePipe.transform(this.today, 'mediumDate');
-    let selectedTime = time ? this.datePipe.transform(time, 'HH:mm:ss') : '00:00:00';
-
-    return new Date(`${selectedDate}, ${selectedTime}`).toISOString();
   }
 
   private checkDraft():void {

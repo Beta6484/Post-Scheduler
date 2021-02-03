@@ -1,0 +1,25 @@
+.fieldDateTime {
+  height: 100%;
+
+  &__inputs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__inputDate, &__inputTime {
+    position: relative;
+    width: 46%;
+
+    & > * {
+      max-width: 100%;
+    }
+  }
+
+  &__inputIcon {
+    position: absolute;
+    z-index: 1;
+    top: calc(50% - 7px);
+    left: 10px;
+  }
+}
