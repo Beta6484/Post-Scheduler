@@ -124,6 +124,50 @@ dp-date-picker {
     max-width: 100%;
     padding: 10px 16px 10px 30px;
   }
+
+  dp-day-calendar {
+    .dp-day-calendar-container {
+      padding: 10px;
+
+      .dp-calendar-nav-container {
+        color: #172B4D;
+        border: none;
+        margin-bottom: 10px;
+
+        .dp-nav-header {
+          left: 0;
+
+          .dp-nav-header-btn {
+            text-transform: capitalize;
+            padding-left: 0;
+          }
+        }
+      }
+
+      .dp-calendar-wrapper {
+        border: none;
+
+        .dp-weekdays {
+          .dp-calendar-weekday {
+            font-size: 12px;
+            color: #172B4D;
+            text-transform: uppercase;
+            border: none;
+          }
+        }
+
+        .dp-calendar-week {
+          .dp-calendar-day {
+            font-size: 12px;
+
+            &.dp-selected {
+              background: #F2994A;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 .emoji-mart {
