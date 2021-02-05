@@ -28,7 +28,7 @@ Acesse o projeto online na plataforma [Netlify](https://mlabs-post-scheduler.net
   - As imagens armazenadas em tempo de execução são convertidas em Base64 para viabilizar e facilitar o armazenamento no backend simulado.
 - A listagem de agendamentos é acessada quando um post é agendado com sucesso. Para visualizar esta página a qualquer momento basta acessar a rota `/lista`. Observação: Parece que o [Netlify](https://mlabs-post-scheduler.netlify.app/) tem algum problema com acessos editando o URL na barra de endereços.
 
-## Melhorias sugeridas
+## Passos futuros
 
 - Tratamento de erros especializados para as requisições;
 - Indicação visual de carregamento de conteúdo;

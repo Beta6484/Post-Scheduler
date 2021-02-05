@@ -1,0 +1,13 @@
+<div class="fieldTextArea">
+  <div class="panel">
+    <div class="panel__header">
+      Texto do post
+    </div>
+    <div class="panel__body">
+      <div class="fieldTextArea__textArea">
+        <textarea #textArea class="fieldTextArea__text" placeholder="Aqui vai o texto descritivo desse post" [(ngModel)]="text" (input)="getTyped()" (click)="getCaretPos(text)" (keyup)="getCaretPos()" data-emoji-picker="true"></textarea>
+        <!-- <app-emoji-picker (onSelect)="getEmojiSelected($event)"></app-emoji-picker> -->
+      </div>
+    </div>
+  </div>
+</div>

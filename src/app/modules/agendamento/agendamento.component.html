@@ -10,20 +10,8 @@
             <div class="container__halfCol">
               <app-field-date-time (onSelect)="getDateTimeVal($event)"></app-field-date-time>
             </div>
-
-            <!-- Painel de insersão de texto com emoji -->
             <div class="container__fullCol">
-              <div class="agendamento__panel">
-                <div class="agendamento__panelHeader">
-                  Texto do post
-                </div>
-                <div class="agendamento__panelBody">
-                  <div class="agendamento__textarea">
-                    <app-emoji-picker (onSelect)="emojiSelected($event)"></app-emoji-picker>
-                    <textarea class="agendamento__text" formControlName="text" placeholder="Aqui vai o texto descritivo desse post"></textarea>
-                  </div>
-                </div>
-              </div>
+              <app-field-text-area (onChange)="getTextVal($event)"></app-field-text-area>
             </div>
 
             <!-- Painel de upload de arquivo -->

@@ -1,6 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import { SocialNetworks } from 'src/app/shared/models';
 import { SocialNetworksService } from 'src/app/shared/services/social-networks';
 
@@ -11,7 +10,6 @@ import { SocialNetworksService } from 'src/app/shared/services/social-networks';
 })
 
 export class FieldSocialNetworksComponent implements OnInit {
-  public socialNetworks$: Observable<SocialNetworks[]>;
   public socialNetworks: SocialNetworks[];
   private selectedSocialNetworks: number[] = [];
   @Output() onSelect: EventEmitter<any> = new EventEmitter();
@@ -22,6 +20,7 @@ export class FieldSocialNetworksComponent implements OnInit {
 
   ngOnInit(): void {
     this.socialNetworksService.getAll().pipe(
+      take(1),
       map(res => {
         res.forEach(el => el.checked = false)
         return res;

@@ -1,0 +1,16 @@
+.fieldTextArea {
+  height: 100%;
+
+  &__textArea {
+    position: relative;
+  }
+
+  &__text {
+    width: 100%;
+    height: 150px;
+    resize: none;
+    border: solid 1px #949494;
+    border-radius: 4px;
+    padding: 6px;
+  }
+}

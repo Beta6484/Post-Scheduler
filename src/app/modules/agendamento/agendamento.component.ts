@@ -62,8 +62,8 @@ export class AgendamentoComponent implements OnInit {
     this.scheduleForm.controls['publication_date'].patchValue(res);
   }
 
-  public emojiSelected(res): void  {
-    this.scheduleForm.controls['text'].patchValue(this.scheduleForm.controls['text'].value + res);
+  public getTextVal(res: string): void {
+    this.scheduleForm.controls['text'].patchValue(res);
   }
 
   public onfileUpload(res): void {

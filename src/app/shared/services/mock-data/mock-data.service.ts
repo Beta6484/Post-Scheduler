@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { take } from 'rxjs/operators';
 import { Schedule, SchedulesStatus, SocialNetworks } from '../../models';
 import { SchedulesService } from '../schedules';
 import { SchedulesStatusService } from '../schedules-status';
@@ -24,11 +25,11 @@ export class MockDataService {
   }
 
   private storeInitialSchedules(): void {
-    this.schedulesService.isEmpty().subscribe(res => {
+    this.schedulesService.isEmpty().pipe(take(1)).subscribe(res => {
       if(!res)
         return;
 
-      this.httpClient.get('assets/data/schedules.json').subscribe(res => {
+      this.httpClient.get('assets/data/schedules.json').pipe(take(1)).subscribe(res => {
         let data: [] = res['data'];
         data.forEach((item: Schedule) => {
           this.schedulesService.post({
@@ -45,11 +46,11 @@ export class MockDataService {
   }
 
   private storeInitialSchedulesStatus(): void {
-    this.schedulesStatusService.isEmpty().subscribe(res => {
+    this.schedulesStatusService.isEmpty().pipe(take(1)).subscribe(res => {
       if(!res)
         return;
 
-      this.httpClient.get('assets/data/schedules-status.json').subscribe(res => {
+      this.httpClient.get('assets/data/schedules-status.json').pipe(take(1)).subscribe(res => {
         let data: [] = res['data'];
         data.forEach((item: SchedulesStatus) => {
           this.schedulesStatusService.post({
@@ -63,11 +64,11 @@ export class MockDataService {
   }
 
   private storeInitialSocialNetworks(): void {
-    this.socialNetworksService.isEmpty().subscribe(res => {
+    this.socialNetworksService.isEmpty().pipe(take(1)).subscribe(res => {
       if(!res)
         return;
 
-      this.httpClient.get('assets/data/social-networks.json').subscribe(res => {
+      this.httpClient.get('assets/data/social-networks.json').pipe(take(1)).subscribe(res => {
         let data: [] = res['data'];
         data.forEach((item: SocialNetworks) => {
           this.socialNetworksService.post({

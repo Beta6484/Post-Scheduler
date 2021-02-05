@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Schedule } from '../../models';
 
@@ -8,7 +8,7 @@ import { Schedule } from '../../models';
   styleUrls: ['./post-preview.component.scss']
 })
 
-export class PostPreviewComponent implements OnInit {
+export class PostPreviewComponent implements OnInit, OnDestroy {
   public showSocial: boolean = false;
   @Input() socialData$: BehaviorSubject<Schedule>;
 
@@ -18,5 +18,9 @@ export class PostPreviewComponent implements OnInit {
 
   public toggleSocial() {
     this.showSocial = !this.showSocial;
+  }
+
+  ngOnDestroy(): void {
+    this.socialData$.unsubscribe();
   }
 }

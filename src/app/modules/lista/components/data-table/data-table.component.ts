@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { forkJoin } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import { Schedule, SchedulesStatus } from 'src/app/shared/models';
 import { SchedulesService } from 'src/app/shared/services/schedules';
 import { SchedulesStatusService } from 'src/app/shared/services/schedules-status';
@@ -32,6 +32,7 @@ export class DataTableComponent implements OnInit {
       this.schedulesStatusService.getAll(),
       this.socialNetworksService.getAll()
     ]).pipe(
+      take(1),
       map(([schedules, schedulesStatus, socialNetworks]) => {
         let schedulesList = [];
 
