@@ -18,6 +18,7 @@ import { SchedulesService } from 'src/app/shared/services/schedules';
 export class AgendamentoComponent implements OnInit {
   public scheduleForm: FormGroup;
   public socialData$: BehaviorSubject<any> = new BehaviorSubject<any>({});
+  private hasDraft: boolean = false;
 
   @HostListener('window:resize', ['$event']) onResize(event) {
     this.isMobile();
@@ -90,7 +91,7 @@ export class AgendamentoComponent implements OnInit {
   }
 
   public cancel(): void {
-    if(this.scheduleForm.valid) {
+    if(this.scheduleForm.valid && !this.hasDraft) {
       this.triggerModal('cancelModal', 'open');
     } else {
       this.goTo('home');
@@ -130,8 +131,12 @@ export class AgendamentoComponent implements OnInit {
   private checkDraft():void {
     this.draftService.isEmpty().pipe(take(1)).subscribe(res => {
       if(res) {
+        this.hasDraft = false;
+
         return;
       } else {
+        this.hasDraft = true;
+
         this.draftService.getAll().pipe(take(1)).subscribe(res => {
           this.scheduleForm.patchValue({
             media: res[0].media,

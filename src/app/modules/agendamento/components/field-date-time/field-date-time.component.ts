@@ -1,5 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import * as moment from 'moment';
+import { BehaviorSubject } from 'rxjs';
+import { take } from 'rxjs/operators';
+import { Schedule } from 'src/app/shared/models';
 import { DateConfig, TimeConfig } from 'src/app/shared/utils/date-picker-config';
 
 @Component({
@@ -13,11 +16,11 @@ export class FieldDateTimeComponent implements OnInit {
   public postTimeConfig = TimeConfig;
   public selectedDate: moment.Moment;
   public selectedTime: moment.Moment;
-  @Input() initialVal?: string;
+  @Input() socialData$: BehaviorSubject<Schedule>;
   @Output() onSelect: EventEmitter<any> = new EventEmitter();
 
   ngOnInit(): void {
-    this.checkInitialVal();
+    this.checkDraft();
   }
 
   public getSelectedDate(res: any): void {
@@ -37,11 +40,12 @@ export class FieldDateTimeComponent implements OnInit {
     return moment(`${selectedDate} ${selectedTime}`).toISOString();
   }
 
-  private checkInitialVal(): void {
-    if(!this.initialVal)
-      return;
-
-    this.selectedDate = moment(this.initialVal);
-    this.selectedTime = moment(this.initialVal);
+  private checkDraft(): void {
+    this.socialData$.pipe(take(2)).subscribe(res => {
+      if(Object.keys(res).length > 0) {
+        this.selectedDate = moment(res.publication_date);
+        this.selectedTime = moment(res.publication_date);
+      }
+    });
   }
 }

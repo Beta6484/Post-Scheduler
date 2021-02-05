@@ -6,5 +6,5 @@ export interface Schedule {
   text: string,
   media: string,
   status?: object,
-  status_key: number
+  status_key?: number
 }

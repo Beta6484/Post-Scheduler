@@ -4,7 +4,7 @@
       Upload de imagem
     </div>
     <div class="panel__body">
-      <app-file-upload (fileUploaded)="getSelectedFile($event)"></app-file-upload>
+      <app-file-upload (fileUploaded)="getSelectedFile($event)" [fileSelected]="hasDraft"></app-file-upload>
     </div>
   </div>
 </div>
