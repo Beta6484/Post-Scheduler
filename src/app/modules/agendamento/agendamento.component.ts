@@ -2,11 +2,12 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { NgxIndexedDBService } from 'ngx-indexed-db';
 import { BehaviorSubject } from 'rxjs';
+import { take } from 'rxjs/operators';
 import { ModalService } from 'src/app/shared/components/modal';
 import { Schedule } from 'src/app/shared/models';
-import { DateConfig, TimeConfig } from 'src/app/shared/utils/date-picker-config';
+import { DraftService } from 'src/app/shared/services/draft';
+import { SchedulesService } from 'src/app/shared/services/schedules';
 
 @Component({
   selector: 'app-agendamento',
@@ -17,14 +18,6 @@ import { DateConfig, TimeConfig } from 'src/app/shared/utils/date-picker-config'
 export class AgendamentoComponent implements OnInit {
   public scheduleForm: FormGroup;
   public socialData$: BehaviorSubject<any> = new BehaviorSubject<any>({});
-  public selectedSocialNetworks: number[] = [];
-  public selectedPostDate: string;
-  public selectedPostTime: string;
-  public selectedMedia: string | ArrayBuffer;
-  public today = new Date();
-  public imageFromDraft: boolean = false;
-  public postDateConfig = DateConfig;
-  public postTimeConfig = TimeConfig;
 
   @HostListener('window:resize', ['$event']) onResize(event) {
     this.isMobile();
@@ -33,9 +26,10 @@ export class AgendamentoComponent implements OnInit {
   constructor(
     private title: Title,
     private router: Router,
-    private dbService: NgxIndexedDBService,
     private formBuilder: FormBuilder,
-    private modalService: ModalService
+    private modalService: ModalService,
+    private schedulesService: SchedulesService,
+    private draftService: DraftService
   ) {
     this.title.setTitle('Painel de Agendamento de Posts - mLabs');
   }
@@ -70,78 +64,81 @@ export class AgendamentoComponent implements OnInit {
     this.scheduleForm.controls['media'].patchValue(res);
   }
 
-
-
-  public onfileUpload(res): void {
-    this.selectedMedia = res;
-    this.scheduleForm.controls['media'].patchValue(this.selectedMedia);
-  }
-
   public onFormChange(): void {
     this.scheduleForm.valueChanges.subscribe((res: Schedule) => this.socialData$.next(res));
   }
 
-  public onSubmit(): void {
-    this.dbService.add('schedules', this.scheduleForm.value);
-
-    this.openModal('sucessModal');
+  public submit(): void {
+    this.schedulesService.post(this.scheduleForm.value);
+    this.triggerModal('sucessModal', 'open');
   }
 
-  public onSaveDraft(): void {
-    this.dbService.getAll('drafts').subscribe(res => {
-      if(res.length === 0) {
-        this.dbService.add('drafts', this.scheduleForm.value);
+  public save(): void {
+    this.draftService.isEmpty().pipe(take(1)).subscribe(res => {
+      if(res) {
+        this.draftService.post(this.scheduleForm.value);
       } else {
-        this.scheduleForm.value.id = res[0].id;
-        this.dbService.update('drafts', this.scheduleForm.value);
+        this.draftService.getAll().pipe(take(1)).subscribe(res => {
+          this.scheduleForm.value.id = res[0].id;
+          this.draftService.update(this.scheduleForm.value);
+        });
       }
-    });
 
-    this.openModal('draftModal');
+      this.triggerModal('draftModal', 'open');
+    });
+  }
+
+  public cancel(): void {
+    if(this.scheduleForm.valid) {
+      this.triggerModal('cancelModal', 'open');
+    } else {
+      this.goTo('home');
+    }
   }
 
   public isMobile():boolean {
     return window.innerWidth < 992;
   }
 
-  public goToHome(): void {
-    this.dbService.getAll('drafts').subscribe((res: Schedule[]) => {
-      if(res.length > 0) {
-        this.dbService.clear('drafts')
+  public goTo(route: string): void {
+    this.router.navigate([route]);
+  }
+
+  public triggerModal(id: string, method: string) {
+    switch (method) {
+      case 'open':
+        this.modalService.open(id);
+      break;
+
+      case 'close':
+        this.modalService.close(id);
+      break;
+    }
+  }
+
+  public clearDraft() {
+    this.draftService.isEmpty().pipe(take(1)).subscribe(res => {
+      if(res) {
+        return;
+      } else {
+        this.draftService.clear();
       }
     });
-
-    this.router.navigate(['home']);
-  }
-
-  public goToList(): void {
-    this.router.navigate(['lista']);
-  }
-
-  public openModal(id): void {
-    this.modalService.open(id);
-  }
-
-  public closeModal(id): void {
-    this.modalService.close(id);
   }
 
   private checkDraft():void {
-    this.dbService.getAll('drafts').subscribe((res: Schedule[]) => {
-      if(res.length === 0) {
+    this.draftService.isEmpty().pipe(take(1)).subscribe(res => {
+      if(res) {
         return;
       } else {
-        this.selectedSocialNetworks = res[0].social_network_key;
-        this.selectedPostDate = res[0].publication_date;
-        this.selectedPostTime = res[0].publication_date;
-        this.imageFromDraft = true;
-
-        this.scheduleForm.patchValue({
-          media: res[0].media,
-          publication_date: res[0].publication_date,
-          social_network_key: res[0].social_network_key,
-          status_key: res[0].status_key,
-          text: res[0].text
+        this.draftService.getAll().pipe(take(1)).subscribe(res => {
+          this.scheduleForm.patchValue({
+            media: res[0].media,
+            publication_date: res[0].publication_date,
+            social_network_key: res[0].social_network_key,
+            status_key: res[0].status_key,
+            text: res[0].text
+          });
         });
       }
     });

@@ -8,33 +8,33 @@ import { Schedule } from '../../models';
   providedIn: 'root'
 })
 
-export class SchedulesService {
+export class DraftService {
   constructor(
     private dbService: NgxIndexedDBService
   ) {}
 
   public getAll(): Observable<Schedule[]> {
-    return this.dbService.getAll('schedules');
+    return this.dbService.getAll('drafts');
   }
 
   public post(data: Schedule): Observable<number> {
-    return this.dbService.add('schedules', data);
+    return this.dbService.add('drafts', data);
   }
 
   public update(data: Schedule): Observable<any[]> {
-    return this.dbService.update('schedules', data);
+    return this.dbService.update('drafts', data);
   }
 
   public delete(key: number): Observable<any[]> {
-    return this.dbService.delete('schedules', key);
+    return this.dbService.delete('drafts', key);
   }
 
   public clear(): Observable<boolean> {
-    return this.dbService.clear('schedules');
+    return this.dbService.clear('drafts');
   }
 
   public isEmpty(): Observable<boolean> {
-    return this.dbService.count('schedules').pipe(
+    return this.dbService.count('drafts').pipe(
       map(res => res === 0)
     );
   }

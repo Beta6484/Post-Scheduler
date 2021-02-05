@@ -21,8 +21,8 @@ export class SocialNetworksService {
     return this.dbService.add('social-networks', data);
   }
 
-  public update(data: SocialNetworks, key: number): Observable<any[]> {
-    return this.dbService.update('social-networks', data, key);
+  public update(data: SocialNetworks): Observable<any[]> {
+    return this.dbService.update('social-networks', data);
   }
 
   public delete(key: number): Observable<any[]> {

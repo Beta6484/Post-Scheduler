@@ -11,7 +11,7 @@ import { MyEmojiModule } from 'src/app/shared/components/my-emoji';
 import { PostPreviewModule } from 'src/app/shared/components/post-preview';
 import { AgendamentoComponent } from './agendamento.component';
 import { ROUTES } from './agendamento.routes';
-import { FieldDateTimeComponent, FieldImageUploadComponent, FieldSocialNetworksComponent, FieldTextAreaComponent } from './components';
+import { FieldDateTimeComponent, FieldImageUploadComponent, FieldPostPreviewComponent, FieldSocialNetworksComponent, FieldTextAreaComponent } from './components';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,8 @@ import { FieldDateTimeComponent, FieldImageUploadComponent, FieldSocialNetworksC
     FieldSocialNetworksComponent,
     FieldDateTimeComponent,
     FieldTextAreaComponent,
-    FieldImageUploadComponent
+    FieldImageUploadComponent,
+    FieldPostPreviewComponent
   ],
   imports: [
     CommonModule,

@@ -21,8 +21,8 @@ export class SchedulesStatusService {
     return this.dbService.add('schedules-status', data);
   }
 
-  public update(data: SchedulesStatus, key: number): Observable<any[]> {
-    return this.dbService.update('schedules-status', data, key);
+  public update(data: SchedulesStatus): Observable<any[]> {
+    return this.dbService.update('schedules-status', data);
   }
 
   public delete(key: number): Observable<any[]> {

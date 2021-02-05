@@ -104,8 +104,14 @@ a, button, input, textarea {
   }
 
   &__body {
+    display: flex;
+    flex-direction: column;
     flex-grow: 1;
     padding: 10px 16px;
+
+    & > * {
+      height: 100%;
+    }
   }
 }
 
