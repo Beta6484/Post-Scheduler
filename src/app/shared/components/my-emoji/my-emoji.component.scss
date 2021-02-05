@@ -1,0 +1,28 @@
+.myEmoji {
+  &__toggleButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 5px;
+
+    svg {
+      fill: #989898;
+    }
+  }
+
+  &__wrapper {
+    position: absolute;
+    font-size: 16px;
+    background-color: #FFFFFF;
+    width: 180px;
+    border: solid 1px #828282;
+    border-radius: 4px;
+    top: 28px;
+    right: 0;
+    padding: 3px;
+  }
+
+  &__button {
+    padding: 6px;
+  }
+}

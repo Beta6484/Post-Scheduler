@@ -72,7 +72,7 @@ export class AgendamentoComponent implements OnInit {
   }
 
   public onFormChange(): void {
-    this.scheduleForm.valueChanges.subscribe((res: Schedule) => this.socialData$.next(res));
+    this.scheduleForm.valueChanges.subscribe((res: Schedule) => {this.socialData$.next(res); console.log(res)});
   }
 
   public onSubmit(): void {

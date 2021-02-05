@@ -8,7 +8,7 @@ import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild }
 
 export class FieldTextAreaComponent implements OnInit {
   public caretPos: number = 0;
-  public text: string;
+  public text: string = '';
   @Input() initialVal?: string;
   @Output() onInput: EventEmitter<any> = new EventEmitter();
   @ViewChild('textArea', { static: true }) textArea: ElementRef;
