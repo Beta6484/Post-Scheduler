@@ -6,7 +6,7 @@
     <div class="panel__body">
       <div class="fieldTextArea__textArea">
         <app-my-emoji (onSelect)="getEmojiSelected($event)"></app-my-emoji>
-        <textarea #textArea class="fieldTextArea__text" placeholder="Aqui vai o texto descritivo desse post" [(ngModel)]="text" (input)="getTyped()" (click)="getCaretPos(text)" (keyup)="getCaretPos()" data-emoji-picker="true"></textarea>
+        <textarea #textArea class="fieldTextArea__text" placeholder="Aqui vai o texto descritivo desse post" [(ngModel)]="text" (input)="getTyped()" (click)="getCaretPos()" (keyup)="getCaretPos()" data-emoji-picker="true"></textarea>
       </div>
     </div>
   </div>

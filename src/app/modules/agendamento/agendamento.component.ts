@@ -66,13 +66,19 @@ export class AgendamentoComponent implements OnInit {
     this.scheduleForm.controls['text'].patchValue(res);
   }
 
+  public getFileVal(res: string): void {
+    this.scheduleForm.controls['media'].patchValue(res);
+  }
+
+
+
   public onfileUpload(res): void {
     this.selectedMedia = res;
     this.scheduleForm.controls['media'].patchValue(this.selectedMedia);
   }
 
   public onFormChange(): void {
-    this.scheduleForm.valueChanges.subscribe((res: Schedule) => {this.socialData$.next(res); console.log(res)});
+    this.scheduleForm.valueChanges.subscribe((res: Schedule) => this.socialData$.next(res));
   }
 
   public onSubmit(): void {

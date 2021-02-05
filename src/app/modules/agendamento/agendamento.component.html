@@ -13,17 +13,8 @@
             <div class="container__fullCol">
               <app-field-text-area (onInput)="getTextVal($event)"></app-field-text-area>
             </div>
-
-            <!-- Painel de upload de arquivo -->
             <div class="container__fullCol mb-0">
-              <div class="agendamento__panel">
-                <div class="agendamento__panelHeader">
-                  Upload de imagem
-                </div>
-                <div class="agendamento__panelBody">
-                  <app-file-upload [fileSelected]="imageFromDraft" (fileUploaded)="onfileUpload($event)"></app-file-upload>
-                </div>
-              </div>
+              <app-field-image-upload (onSelect)="getFileVal($event)"></app-field-image-upload>
             </div>
           </div>
         </div>

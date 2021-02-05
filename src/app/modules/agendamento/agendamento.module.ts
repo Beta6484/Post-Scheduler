@@ -11,14 +11,15 @@ import { MyEmojiModule } from 'src/app/shared/components/my-emoji';
 import { PostPreviewModule } from 'src/app/shared/components/post-preview';
 import { AgendamentoComponent } from './agendamento.component';
 import { ROUTES } from './agendamento.routes';
-import { FieldDateTimeComponent, FieldSocialNetworksComponent, FieldTextAreaComponent } from './components';
+import { FieldDateTimeComponent, FieldImageUploadComponent, FieldSocialNetworksComponent, FieldTextAreaComponent } from './components';
 
 @NgModule({
   declarations: [
     AgendamentoComponent,
     FieldSocialNetworksComponent,
     FieldDateTimeComponent,
-    FieldTextAreaComponent
+    FieldTextAreaComponent,
+    FieldImageUploadComponent
   ],
   imports: [
     CommonModule,

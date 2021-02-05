@@ -14,12 +14,28 @@
     position: absolute;
     font-size: 16px;
     background-color: #FFFFFF;
-    width: 180px;
+    width: 178px;
     border: solid 1px #828282;
     border-radius: 4px;
-    top: 28px;
+    top: 34px;
     right: 0;
     padding: 3px;
+
+    &::after {
+      position: absolute;
+      display: block;
+      content: "";
+      background-color: #FFFFFF;
+      border: solid 1px #828282;
+      top: -6px;
+      right: 9px;
+      border-right: none;
+      border-bottom: none;
+      transform: rotate(45deg);
+      width: 10px;
+      height: 10px;
+      z-index: 1;
+    }
   }
 
   &__button {

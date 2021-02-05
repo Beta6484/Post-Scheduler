@@ -45,6 +45,8 @@ button {
 }
 
 a, button, input, textarea {
+  border-radius: 4px;
+
   &:focus {
     outline: none;
     box-shadow: 0px 0px 2px 1px #F2994A;
