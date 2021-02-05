@@ -71,6 +71,7 @@ export class AgendamentoComponent implements OnInit {
   public submit(): void {
     this.schedulesService.post(this.scheduleForm.value);
     this.triggerModal('sucessModal', 'open');
+    this.clearDraft();
   }
 
   public save(): void {
